@@ -26,7 +26,7 @@ function App() {
             {data.map((v, idx)=><li key={'${idx}-'}>{v.title}{v.content}</li>)}
           </ul>
 
-
+        {/*asldkjfalsdkfja;slkfjas;lkfjasl;kjf;ls*/}
         </header>
       </div>
   );
