@@ -1,11 +1,25 @@
 import React from "react";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 function Recommended() {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const getpost = async () => {
+            const response = await axios.get("/board1/list");
+            setData(response.data);
+
+        }
+        getpost();
+
+    }, []);
   return (
-    <div>
-      <h2>추천 페이지</h2>
-      <p>추천 콘텐츠를 여기에 표시합니다.</p>
-    </div>
+      <div>
+          <ul>
+              {data.map((v, idx) => <li key={'${idx}-'}>{v.title}{v.content}</li>)}
+          </ul>
+      </div>
   );
 }
 
