@@ -6,7 +6,8 @@ import Recommended from "./Recommended";
 import Profile from "./Profile/Profile";
 import Following from "./Following/Following";
 import More from "./More/More";
-import Settings from "./Settings/Settings"; 
+import Settings from "./Settings/Settings";
+import Write from "./Profile/Write";
 
 function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -59,6 +60,9 @@ function App() {
         <div className="menu-item">
           <Link to="/more">더보기</Link>
         </div>
+        <div className="menu-item">
+          <Link to="/write">글쓰기</Link>
+        </div>
         <br />
       </div>
       {isLoginModalOpen && <Login onClose={handleCloseModal} />}
@@ -68,7 +72,8 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/following" element={<Following />} />
           <Route path="/more" element={<More />} />
-          <Route path="/settings" element={<Settings />} /> 
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/write" element={<Write />} />
         </Routes>
       </div>
     </div>

@@ -1,0 +1,14 @@
+.layout{
+    width : 500px;
+    margin : 0 auto;
+}
+
+.layout input,textarea{
+    width : 100%;
+    box-sizing: border-box;
+    margin: 10px;
+}
+
+.layout textarea{
+    min-height: 300px;
+}
