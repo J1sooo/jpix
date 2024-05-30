@@ -43,20 +43,21 @@ const Navbar = ( {onLoginClick}) => {
         <div className={`menu-item ${location.pathname === "/profile" ? "active" : ""}`}>
           <Link to="/profile">
             <img src="/image/profile.png" alt="프로필" style={{ width: '24px', height: '24px', marginRight: '10px' }} />
-            
+            <p>프로필</p>
           </Link>
         </div>
         <br />
         <div className={`menu-item ${location.pathname === "/following" ? "active" : ""}`}>
           <Link to="/following">
             <img src="/image/following.png" alt="팔로잉" style={{ width: '24px', height: '24px', marginRight: '10px' }} />
-            
+            <p>팔로잉</p>
           </Link>
         </div>
         <br />
         <div className={`menu-item ${location.pathname === "/more" ? "active" : ""}`}>
           <Link to="/more">
-            <img src="/image/more.png" alt="더보기" style={{ width: '24px', height: '24px', marginRight: '10px' }} />
+            <img src="/image/more.png" alt="더보기" style={{width: '24px', height: '24px', marginRight: '10px'}}/>
+            <p>더보기</p>
           </Link>
         </div>
         <br />

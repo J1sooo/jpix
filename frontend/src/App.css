@@ -125,6 +125,16 @@ body {
   padding: 20px;
 }
 
+.left-menu::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3px; /* 세로줄의 너비 */
+  height: 100%;
+  background-color: #ddd; /* 세로줄의 색상 */
+}
+
 .left-menu .menu-item {
   font-size: 1.2rem;
   color: #007bff;
