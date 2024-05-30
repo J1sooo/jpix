@@ -1,4 +1,4 @@
-package com.shingu.jpix.entity;
+package com.shingu.jpix.domain.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

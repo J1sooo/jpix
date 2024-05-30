@@ -1,6 +1,6 @@
 package com.shingu.jpix.service;
 
-import com.shingu.jpix.entity.Board;
+import com.shingu.jpix.domain.entity.Board;
 import com.shingu.jpix.repository.BoardRepository;
 import com.shingu.jpix.s3.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
