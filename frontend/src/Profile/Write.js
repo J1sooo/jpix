@@ -8,14 +8,18 @@ function Write() {
     const [file, setFile] = useState('');
 
     const handleSubmit = async (e) => {
-    
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("file", file);
 
         try {
-            const response = await axios.post("board/writepro", {
+            const response = await axios.post("board/writepro", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
                 params: {
                     title: title,
                     content: content,
-                    file: file
                 }
             });
             console.log(response.data);
@@ -27,7 +31,7 @@ function Write() {
 
     return (
         <div className="layout">
-            <form onSubmit={handleSubmit} action="/board/writepro">
+            <form>
                 <input 
                     name="title" 
                     type="text" 
@@ -43,7 +47,7 @@ function Write() {
                     type="file"
                     onChange={(e) => setFile(e.target.files[0])}
                 />
-                <button formMethod="post">작성</button>
+                <button onClick={handleSubmit}>작성</button>
             </form>
         </div>
     );

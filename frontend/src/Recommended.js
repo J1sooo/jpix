@@ -1,6 +1,7 @@
 import React from "react";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import "./Recommended.css"
 
 function Recommended() {
     const [data, setData] = useState([]);
@@ -15,10 +16,10 @@ function Recommended() {
 
     }, []);
   return (
-      <div>
-          <ul>
-              {data.map((v, idx) => <li key={'${idx}-'}>{v.title}{v.content}</li>)}
-          </ul>
+      <div className="main">
+              {data.map((v, idx) => <div key={'${idx}-'}>
+                <video controls width="250" autoplay loop><source src={v.filepath} type="video/mp4"/></video>
+                {v.title}{v.content}</div>)}
       </div>
   );
 }

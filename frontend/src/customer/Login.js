@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css"; // 로그인 스타일을 포함한 CSS 파일을 import 합니다.
 
 const Login = ({ onClose }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -19,7 +21,7 @@ const Login = ({ onClose }) => {
   };
 
   const handleSignUp = () => {
-    // 회원가입 페이지로 이동하는 로직을 추가할 수 있습니다.
+    navigate("/signup");
   };
 
   return (
@@ -39,7 +41,7 @@ const Login = ({ onClose }) => {
           onChange={handlePasswordChange}
         />
         <button onClick={handleLogin}>로그인</button>
-        <button onClick={handleSignUp}>회원가입</button>
+        <Link to="/customer/signup"><button onClick={handleSignUp}>회원가입</button></Link>
         <button onClick={onClose}>닫기</button> {/* 모달 닫기 버튼 */}
       </div>
     </div>
