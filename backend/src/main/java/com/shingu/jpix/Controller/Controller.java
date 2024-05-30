@@ -1,16 +1,16 @@
 package com.shingu.jpix.Controller;
 
-import com.shingu.jpix.entity.Board;
+import com.shingu.jpix.domain.entity.Board;
 import com.shingu.jpix.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@org.springframework.stereotype.Controller
+@RestController
 public class Controller {
     @Autowired
     private BoardService boardService;
