@@ -32,7 +32,8 @@ public class UserService {
      * 중복되면 true return
      */
     public boolean checkLoginIdDuplicate(String email) {
-        return userRepository.existsByEmail(email);
+        Optional<User> user = userRepository.findByEmail(email);
+        return user.isPresent();
     }
 
     /**
