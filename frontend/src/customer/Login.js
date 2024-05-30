@@ -18,10 +18,12 @@ const Login = ({ onClose }) => {
   const handleLogin = () => {
     // 로그인 로직을 추가합니다.
     // 예를 들어, 서버로 아이디와 비밀번호를 전송하여 로그인을 시도할 수 있습니다.
+    onClose(); // 로그인 버튼 클릭 시 모달 닫기
   };
 
   const handleSignUp = () => {
     navigate("/signup");
+    onClose(); // 회원가입 버튼 클릭 시 모달 닫기
   };
 
   return (
