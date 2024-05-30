@@ -25,26 +25,31 @@ const Login = ({ onClose }) => {
   };
 
   return (
-    <div className="login-modal">
-      <div className="login-form">
-        <h2>로그인</h2>
-        <input
-          type="text"
-          placeholder="아이디"
-          value={username}
-          onChange={handleUsernameChange}
-        />
-        <input
-          type="password"
-          placeholder="비밀번호"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-        <button onClick={handleLogin}>로그인</button>
-        <Link to="/customer/signup"><button onClick={handleSignUp}>회원가입</button></Link>
-        <button onClick={onClose}>닫기</button> {/* 모달 닫기 버튼 */}
-      </div>
-    </div>
+      <>
+        <div className="modal-overlay" onClick={onClose}></div> {/* 반투명 배경 */}
+        <div className="login-modal">
+          <div className="login-form">
+            <h2>로그인</h2>
+            <input
+                type="text"
+                placeholder="아이디"
+                value={username}
+                onChange={handleUsernameChange}
+            />
+            <input
+                type="password"
+                placeholder="비밀번호"
+                value={password}
+                onChange={handlePasswordChange}
+            />
+            <button onClick={handleLogin}>로그인</button>
+            <Link to="/customer/signup">
+              <button onClick={handleSignUp}>회원가입</button>
+            </Link>
+            <button onClick={onClose}>닫기</button> {/* 모달 닫기 버튼 */}
+          </div>
+        </div>
+      </>
   );
 };
 

@@ -10,6 +10,17 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* 모달을 맨 앞에 오도록 하는 z-index 값 */
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+  z-index: 999; /* 모달 바로 뒤에 오도록 하는 z-index 값 */
 }
 
 .login-form {
