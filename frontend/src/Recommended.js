@@ -17,7 +17,7 @@ function Recommended() {
     }, []);
   return (
       <div className="main">
-              {data.map((v, idx) => <div key={'${idx}-'}>
+              {data.map((v, idx) => <div key={`${idx}-`}>
                 <video controls width="250" autoplay loop><source src={v.filepath} type="video/mp4"/></video>
                 {v.title}{v.content}</div>)}
       </div>
