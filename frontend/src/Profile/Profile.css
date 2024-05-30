@@ -1,0 +1,70 @@
+.profile-page {
+    max-width: 935px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-pic img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+  }
+  
+  .profile-info {
+    margin-left: 20px;
+  }
+  
+  .profile-name {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .profile-name h2 {
+    margin: 0;
+    margin-right: 20px;
+  }
+  
+  .edit-profile-btn {
+    padding: 5px 10px;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .profile-stats {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  .profile-stats span {
+    margin-right: 20px;
+  }
+  
+  .profile-bio {
+    max-width: 500px;
+  }
+  
+  .profile-posts {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .profile-post {
+    width: 31%;
+    margin: 1%;
+  }
+  
+  .profile-post img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
