@@ -208,5 +208,24 @@ a {
   color: inherit;
 }
 
+.menu-item {
+  display: flex;
+  align-items: center;
+}
+
+.menu-link {
+  display: flex;
+  align-items: center;
+}
+
+.menu-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.menu-item span {
+  vertical-align: middle;
+}
 
 

@@ -36,7 +36,7 @@ const Navbar = ( {onLoginClick}) => {
         <div className={`menu-item ${location.pathname === "/recommended" ? "active" : ""}`}>
           <Link to="/">
             <img src="/image/recommended.png" alt="추천" style={{ width: '24px', height: '24px', marginRight: '10px' }} />
-                
+            <p>추천</p>
           </Link>
         </div>
         <br />
@@ -49,14 +49,14 @@ const Navbar = ( {onLoginClick}) => {
         <br />
         <div className={`menu-item ${location.pathname === "/following" ? "active" : ""}`}>
           <Link to="/following">
-            <img src="" alt="팔로잉" style={{ width: '24px', height: '24px', marginRight: '10px' }} />
+            <img src="/image/following.png" alt="팔로잉" style={{ width: '24px', height: '24px', marginRight: '10px' }} />
             
           </Link>
         </div>
         <br />
         <div className={`menu-item ${location.pathname === "/more" ? "active" : ""}`}>
           <Link to="/more">
-            <img src="" alt="더보기" style={{ width: '24px', height: '24px', marginRight: '10px' }} />
+            <img src="/image/more.png" alt="더보기" style={{ width: '24px', height: '24px', marginRight: '10px' }} />
           </Link>
         </div>
         <br />
