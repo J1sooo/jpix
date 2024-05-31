@@ -11,6 +11,7 @@ import Write from "./Profile/Write";
 import Navbar from "./Navbar";
 import SignUp from "./customer/SignUp"
 
+
 function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const handleLoginClick = () => {
@@ -35,6 +36,7 @@ function App() {
           <Route path="/settings" element={<Settings />} />
           <Route path="/write" element={<Write />} />
           <Route path="/customer/signup" element={<SignUp />} />
+
         </Routes>
       </div>
     </div>

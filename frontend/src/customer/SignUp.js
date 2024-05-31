@@ -45,23 +45,24 @@ const SignUp = () => {
     <div className="signup-container">
       <form className="signup-form" onSubmit={handleSignUp}>
         <h2>회원가입</h2>
+
         <input
-          type="text"
-          placeholder="아이디"
-          value={username}
-          onChange={handleUsernameChange}
+            type="text"
+            placeholder="아이디"
+            value={username}
+            onChange={handleUsernameChange}
         />
         <input
-          type="password"
-          placeholder="비밀번호"
-          value={password}
-          onChange={handlePasswordChange}
+            type="password"
+            placeholder="비밀번호"
+            value={password}
+            onChange={handlePasswordChange}
         />
         <input
-          type="email"
-          placeholder="이메일"
-          value={email}
-          onChange={handleEmailChange}
+            type="email"
+            placeholder="이메일"
+            value={email}
+            onChange={handleEmailChange}
         />
         <button type="submit">회원가입</button>
       </form>

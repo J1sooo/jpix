@@ -2,10 +2,14 @@ import React from "react";
 
 function Settings() {
   return (
-    <div>
-      <h2>설정 페이지</h2>
-      <p>설정 내용을 여기에 표시합니다.</p>
-    </div>
+      <div>
+          <h1>회원 관리</h1>
+
+          <button>로그아웃</button>
+          <br></br>
+          <br></br>
+          <button>회원 탈퇴</button>
+      </div>
   );
 }
 

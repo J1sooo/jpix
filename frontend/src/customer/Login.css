@@ -1,15 +1,17 @@
 /* Login.css */
 
 .login-modal {
+  width: 600px;
+  height: 300px;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: 20px;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(2, 2, 2, 0.1);
   z-index: 1000; /* 모달을 맨 앞에 오도록 하는 z-index 값 */
 }
 
@@ -25,7 +27,7 @@
 
 .login-form {
   display: flex;
-  flex-direction: column;
+  flex-direction:column;
 }
 
 .login-form input {

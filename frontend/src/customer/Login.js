@@ -31,7 +31,7 @@ const Login = ({ onClose }) => {
         <div className="modal-overlay" onClick={onClose}></div> {/* 반투명 배경 */}
         <div className="login-modal">
           <div className="login-form">
-            <h2>로그인</h2>
+            <h2> JPIX에 로그인</h2>
             <input
                 type="text"
                 placeholder="아이디"

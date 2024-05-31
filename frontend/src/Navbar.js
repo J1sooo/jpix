@@ -2,6 +2,7 @@ import React from "react";
 
 import { Link, useLocation } from "react-router-dom";
 
+import { userEffect } from "react";
 
 const Navbar = ( {onLoginClick}) => {
   const location = useLocation();
@@ -35,32 +36,39 @@ const Navbar = ( {onLoginClick}) => {
       <div className="left-menu">
         <div className={`menu-item ${location.pathname === "/recommended" ? "active" : ""}`}>
           <Link to="/">
-            <img src="/image/recommended.png" alt="추천" style={{ width: '24px', height: '24px', marginRight: '10px' }} />
+            <img src="/image/recommended.png" alt="추천" style={{width: '24px', height: '24px', marginRight: '10px'}}/>
             <p>추천</p>
           </Link>
         </div>
-        <br />
+        <br/>
         <div className={`menu-item ${location.pathname === "/profile" ? "active" : ""}`}>
           <Link to="/profile">
-            <img src="/image/profile.png" alt="프로필" style={{ width: '24px', height: '24px', marginRight: '10px' }} />
+            <img src="/image/profile.png" alt="프로필" style={{width: '24px', height: '24px', marginRight: '10px'}}/>
             <p>프로필</p>
           </Link>
         </div>
-        <br />
+
+        <div className={`menu-item ${location.pathname === "/write" ? "active" : ""}`}>
+          <Link to="write">
+            <img src="/image/profile.png" alt="업로드" style={{width: '24px', height: '24px', marginRight: '10px'}}/>
+            <p>업로드</p>
+          </Link>
+        </div>
+        <br/>
         <div className={`menu-item ${location.pathname === "/following" ? "active" : ""}`}>
           <Link to="/following">
-            <img src="/image/following.png" alt="팔로잉" style={{ width: '24px', height: '24px', marginRight: '10px' }} />
+            <img src="/image/following.png" alt="팔로잉" style={{width: '24px', height: '24px', marginRight: '10px'}}/>
             <p>팔로잉</p>
           </Link>
         </div>
-        <br />
+        <br/>
         <div className={`menu-item ${location.pathname === "/more" ? "active" : ""}`}>
           <Link to="/more">
             <img src="/image/more.png" alt="더보기" style={{width: '24px', height: '24px', marginRight: '10px'}}/>
             <p>더보기</p>
           </Link>
         </div>
-        <br />
+        <br/>
       </div>
     </div>
   );

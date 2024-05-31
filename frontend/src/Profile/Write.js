@@ -35,7 +35,7 @@ function Write() {
                 <input 
                     name="title" 
                     type="text" 
-                    value={title} 
+                    value={title}
                     onChange={(e) => setTitle(e.target.value)} 
                 />
                 <textarea 
@@ -49,6 +49,8 @@ function Write() {
                 />
                 <button onClick={handleSubmit}>작성</button>
             </form>
+
+
         </div>
     );
 }
