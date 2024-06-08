@@ -32,15 +32,17 @@ function Write() {
     return (
         <div className="layout">
             <form>
-                <input 
-                    name="title" 
-                    type="text" 
+                <input
+                    name="title"
+                    type="text"
+                    placeholder="동영상 제목"
                     value={title}
-                    onChange={(e) => setTitle(e.target.value)} 
+                    onChange={(e) => setTitle(e.target.value)}
                 />
-                <textarea 
-                    name="content" 
-                    value={content} 
+                <textarea
+                    name="content"
+                    placeholder="동영상 내용을 입력하세요..."
+                    value={content}
                     onChange={(e) => setContent(e.target.value)}
                 />
                 <input
@@ -49,8 +51,6 @@ function Write() {
                 />
                 <button onClick={handleSubmit}>작성</button>
             </form>
-
-
         </div>
     );
 }
