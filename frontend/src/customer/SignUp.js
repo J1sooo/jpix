@@ -1,12 +1,13 @@
-import React, { useState } from "react";
-import "./SignUp.css";
-import axios from "axios"; // 회원가입 스타일을 포함한 CSS 파일을 import 합니다.
-
-const SignUp = () => {
+import React, { useState} from "react";
+import "./SignUp.css"; // 회원가입 스타일을 포함한 CSS 파일을 import 합니다.
+import axios from "axios";
+import "./Login.css";
+import {useNavigate, Link} from "react-router-dom";
+const SignUp = ({ onClose }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-
+  const navigate = useNavigate();
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
@@ -41,32 +42,39 @@ const SignUp = () => {
     console.log("회원가입 정보:", {username, password, email});
   };
 
-  return (
-    <div className="signup-container">
-      <form className="signup-form" onSubmit={handleSignUp}>
-        <h2>회원가입</h2>
 
-        <input
-            type="text"
-            placeholder="아이디"
-            value={username}
-            onChange={handleUsernameChange}
-        />
-        <input
-            type="password"
-            placeholder="비밀번호"
-            value={password}
-            onChange={handlePasswordChange}
-        />
-        <input
-            type="email"
-            placeholder="이메일"
-            value={email}
-            onChange={handleEmailChange}
-        />
-        <button type="submit">회원가입</button>
-      </form>
+  return (
+    <>
+    <div className="modal-overlay"><div></div>
+      <div className="login-modal">
+        <form className="login-form" onSubmit={handleSignUp}>
+          <h2>회원가입</h2>
+
+          <input
+              type="text"
+              placeholder="아이디"
+              value={username}
+              onChange={handleUsernameChange}
+          />
+          <input
+              type="password"
+              placeholder="비밀번호"
+              value={password}
+              onChange={handlePasswordChange}
+          />
+          <input
+              type="email"
+              placeholder="이메일"
+              value={email}
+              onChange={handleEmailChange}
+          />
+          <button type="submit">회원가입</button>
+          <br></br>
+          <Link to="/"><button onClick={onClose}>닫기</button> </Link>
+        </form>
+      </div>
     </div>
+    </>
   );
 };
 
