@@ -1,5 +1,6 @@
 .layout{
     width: 600px;
+    position: relative;
     margin: 50px auto;
     padding: 30px;
     border: 1px solid #ccc;

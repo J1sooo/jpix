@@ -46,7 +46,7 @@ const SignUp = ({ onClose }) => {
   return (
     <>
     <div className="modal-overlay"><div></div>
-      <div className="login-modal">
+      <div className="signup-modal">
         <form className="login-form" onSubmit={handleSignUp}>
           <h2>회원가입</h2>
 
@@ -69,7 +69,7 @@ const SignUp = ({ onClose }) => {
               onChange={handleEmailChange}
           />
           <button type="submit">회원가입</button>
-          <br></br>
+
           <Link to="/"><button onClick={onClose}>닫기</button> </Link>
         </form>
       </div>

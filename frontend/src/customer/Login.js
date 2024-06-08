@@ -52,7 +52,12 @@ const Login = ({ onClose }) => {
                   value={password}
                   onChange={handlePasswordChange}
               />
-              <button onClick={handleLogin}>로그인</button>
+
+              <button>KakaoTalk으로 로그인</button>
+              <button>Google으로 로그인</button>
+              <button>Facebook으로 로그인</button>
+
+              <button onClick={handleLogin}> 아이디로 로그인</button>
               <Link to="/customer/signup">
                 <button onClick={handleSignUp}>회원가입</button>
               </Link>
