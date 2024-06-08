@@ -16,18 +16,20 @@ const Navbar = ( {onLoginClick}) => {
         <div className="search-container">
           <form className="search-form" role="search">
             <input
-              className="search-input"
-              type="search"
-              placeholder="검색어를 입력하세요..."
-              aria-label="Search"
+                className="search-input"
+                type="search"
+                placeholder="검색어를 입력하세요..."
+                aria-label="Search"
             />
-            <button className="search-button" type="submit">
-              검색  
-            </button>
-          </form>    
+          </form>
+          <button className="search-button" type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+            </svg>
+          </button>
         </div>
         <div className="nav-buttons">
-            <button  className="btn btn-primary" onClick={onLoginClick} >로그인</button>
+          <button className="btn btn-primary" onClick={onLoginClick} >로그인</button>
             <button className="btn btn-secondary">
             <Link to="/settings" className="settings-link">설정</Link>
           </button>
@@ -50,7 +52,7 @@ const Navbar = ( {onLoginClick}) => {
 
         <div className={`menu-item ${location.pathname === "/write" ? "active" : ""}`}>
           <Link to="write">
-            <img src="/image/profile.png" alt="업로드" style={{width: '24px', height: '24px', marginRight: '10px'}}/>
+            <img src="/image/upload.png" alt="업로드" style={{width: '24px', height: '24px', marginRight: '10px'}}/>
             <p>업로드</p>
           </Link>
         </div>
