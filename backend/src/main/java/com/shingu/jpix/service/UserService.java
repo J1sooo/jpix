@@ -3,6 +3,7 @@ package com.shingu.jpix.service;
 import ch.qos.logback.classic.encoder.JsonEncoder;
 import com.shingu.jpix.domain.dto.JoinRequest;
 import com.shingu.jpix.domain.dto.LoginRequest;
+import com.shingu.jpix.domain.dto.UserRequestDTO;
 import com.shingu.jpix.domain.entity.User;
 import com.shingu.jpix.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,12 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
-@Transactional
 @RequiredArgsConstructor
 public class UserService {
-    @Autowired
-    BCryptPasswordEncoder bCryptPasswordEncoder;
-
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final UserRepository userRepository;
     private JsonEncoder encoder;
 
@@ -41,8 +39,8 @@ public class UserService {
      * 회원가입 기능 구현 시 사용
      * 중복되면 true return
      */
-    public boolean checkNicknameDuplicate(String nickname) {
-        return userRepository.existsByNickname(nickname);
+    public boolean checkNicknameDuplicate(String email) {
+        return userRepository.existsByEmail(email);
     }
 
     /**
@@ -71,22 +69,20 @@ public class UserService {
      *  화면에서 LoginRequest(loginId, password)을 입력받아 loginId와 password가 일치하면 User return
      *  loginId가 존재하지 않거나 password가 일치하지 않으면 null return
      */
-    public User login(LoginRequest req) {
-        Optional<User> optionalUser = userRepository.findByEmail(req.getEmail());
-
-        // loginId와 일치하는 User가 없으면 null return
-        if(optionalUser.isEmpty()) {
-            return null;
+    public int save(UserRequestDTO.Signup dto) {
+        if (userRepository.findByEmail(dto.getEmail()).isPresent()) {
+            throw new IllegalArgumentException("이미 사용중인 이메일입니다.");
         }
 
-        User user = optionalUser.get();
+        User user = User.builder()
+                .email(dto.getEmail())
+                .password(bCryptPasswordEncoder.encode(dto.getPassword()))
+                .username(dto.getNickname())
+                .build();
 
-        // 찾아온 User의 password와 입력된 password가 다르면 null return
-        if(!user.getPassword().equals(req.getPassword())) {
-            return null;
-        }
+        user = userRepository.save(user);
 
-        return user;
+        return user.getId();
     }
 
     /**
@@ -95,9 +91,7 @@ public class UserService {
      * userId가 null이거나(로그인 X) userId로 찾아온 User가 없으면 null return
      * userId로 찾아온 User가 존재하면 User return
      */
-    public User getLoginUserById(Long userId) {
-        if(userId == null) return null;
-
+    public User getLoginUserById(int userId) {
         Optional<User> optionalUser = userRepository.findById(userId);
         if(optionalUser.isEmpty()) return null;
 

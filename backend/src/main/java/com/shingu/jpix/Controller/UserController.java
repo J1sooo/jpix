@@ -2,9 +2,12 @@ package com.shingu.jpix.Controller;
 
 import com.shingu.jpix.domain.dto.JoinRequest;
 import com.shingu.jpix.domain.dto.LoginRequest;
+import com.shingu.jpix.domain.dto.UserResponseDTO;
 import com.shingu.jpix.domain.entity.Board;
 import com.shingu.jpix.domain.entity.User;
+import com.shingu.jpix.service.UserDetailService;
 import com.shingu.jpix.service.UserService;
+import com.shingu.jpix.util.response.ResponseHandler;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
@@ -18,6 +21,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Member;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -26,6 +30,7 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    private final UserDetailService userDetailService;
 
     @PostMapping("/join")
     public ResponseEntity<User> join(@Valid @RequestBody JoinRequest joinRequest, BindingResult bindingResult) {
@@ -44,26 +49,26 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @PostMapping("/login")
-    public String login(@ModelAttribute LoginRequest loginRequest, BindingResult bindingResult,
-                        HttpServletResponse response) {
-        User user = userService.login(loginRequest);
-
-        // 로그인 아이디나 비밀번호가 틀린 경우 global error return
-        if(user == null) {
-            bindingResult.reject("loginFail", "로그인 아이디 또는 비밀번호가 틀렸습니다.");
+    @GetMapping("/me")
+    public ResponseEntity<Object> getMyInfo(Principal principal) {
+        try {
+            User user = (User) userDetailService.loadUserByUsername(principal.getName());
+            UserResponseDTO dto = UserResponseDTO.toMeDTO(user);
+            return ResponseHandler.responseBuilder(
+                    HttpStatus.OK,
+                    null,
+                    dto
+            );
+        } catch (Exception e) {
+            return ResponseHandler.responseBuilder(
+                    HttpStatus.OK,
+                    null,
+                    false
+            );
         }
 
-        if(bindingResult.hasErrors()) {
-            return "login";
-        }
-
-        // 로그인 성공 => 쿠키 생성
-        Cookie cookie = new Cookie("userId", String.valueOf(user.getId()));
-        cookie.setMaxAge(60 * 60);  // 쿠키 유효 시간 : 1시간
-        response.addCookie(cookie);
-
-        return "redirect:/Recommended";
     }
 
 }
+
+

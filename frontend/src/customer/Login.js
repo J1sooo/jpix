@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
 import "./Login.css";
-import {GoogleLogin} from "@react-oauth/google"; // 로그인 스타일을 포함한 CSS 파일을 import 합니다.
-
+import axios from "axios";
+import { axiosLogin } from "../User/axios"; // 로그인 스타일을 포함한 CSS 파일을 import 합니다.
+import { IsLoginState } from "../recoil/RecoilState"; // 로그인 상태를 관리하기 위한 recoil atom import
 
 const Login = ({ onClose }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [loginError, setLoginError] = useState("");
+  const [isOpenModal, setOpenModal] = useState(false);
+  const [isLoading, setLoading] = useState(false);
+  const [isLogin, setIsLogin] = useRecoilState(IsLoginState);
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -17,10 +23,32 @@ const Login = ({ onClose }) => {
     setPassword(e.target.value);
   };
 
-  const handleLogin = () => {
-    // 로그인 로직을 추가합니다.
-    // 예를 들어, 서버로 아이디와 비밀번호를 전송하여 로그인을 시도할 수 있습니다.
-    onClose(); // 로그인 버튼 클릭 시 모달 닫기
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+    if (!username || !password) { // 여기서 || 연산자로 수정
+      setLoginError("아이디와 비밀번호를 모두 입력해주세요.");
+      setOpenModal(true);
+    } else {
+      try {
+        const response = await axiosLogin(username, password);
+        if (response.status === 200) {
+          setIsLogin(true);
+          navigate("/");
+          onClose();
+        }
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          if (error.response.status === 401) {
+            setLoginError(error.response.data);
+          } else {
+            setLoginError(error.message);
+          }
+          setOpenModal(true);
+        }
+      }
+    }
+    setLoading(false);
   };
 
   const handleSignUp = () => {
@@ -33,47 +61,41 @@ const Login = ({ onClose }) => {
     navigate("/"); // 기본 페이지로 리다이렉트
   };
 
+  return (
+      <>
+        <div className="modal-overlay" onClick={onClose}></div>
+        {/* 반투명 배경 */}
+        <div className="login-modal">
+          <div className="login-form">
+            <h2> JPIX에 로그인</h2>
+            <input
+                type="text"
+                placeholder="아이디"
+                value={username}
+                onChange={handleUsernameChange}
+            />
+            <input
+                type="password"
+                placeholder="비밀번호"
+                value={password}
+                onChange={handlePasswordChange}
+            />
 
+            <button>KakaoTalk으로 로그인</button>
+            <button>Google으로 로그인</button>
+            <button>Facebook으로 로그인</button>
 
+            <button onClick={handleLogin}>아이디로 로그인</button>
+            <Link to="/customer/signup">
+              <button onClick={handleSignUp}>회원가입</button>
+            </Link>
 
-    return (
-        <>
-          <div className="modal-overlay" onClick={onClose}></div>
-          {/* 반투명 배경 */}
-          <div className="login-modal">
-              <div className="login-form">
-                  <h2> JPIX에 로그인</h2>
-                  <input
-                      type="text"
-                      placeholder="아이디"
-                      value={username}
-                      onChange={handleUsernameChange}
-                  />
-                  <input
-                      type="password"
-                      placeholder="비밀번호"
-                      value={password}
-                      onChange={handlePasswordChange}
-                  />
-
-                  <button>
-                      Google으로 로그인
-                  </button>
-
-                  <button>KakaoTalk으로 로그인</button>
-                  <button>Facebook으로 로그인</button>
-
-                  <button onClick={handleLogin}> 아이디로 로그인</button>
-                  <Link to="/customer/signup">
-                      <button onClick={handleSignUp}>회원가입</button>
-                  </Link>
-
-                  <button onClick={onClose}>닫기</button>
-                  {/* 모달 닫기 버튼 */}
-              </div>
+            <button onClick={onClose}>닫기</button>
+            {/* 모달 닫기 버튼 */}
           </div>
-        </>
-    );
+        </div>
+      </>
+  );
 };
 
 export default Login;

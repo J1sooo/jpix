@@ -42,7 +42,6 @@ const SignUp = ({ onClose }) => {
     console.log("회원가입 정보:", {username, password, email});
   };
 
-
   return (
     <>
     <div className="modal-overlay"><div></div>
