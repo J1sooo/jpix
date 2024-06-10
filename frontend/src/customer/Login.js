@@ -36,6 +36,7 @@ const Login = ({ onClose }) => {
           setIsLogin(true);
           navigate("/");
           onClose();
+            window.location.reload()
         }
       } catch (error) {
         if (axios.isAxiosError(error)) {
@@ -97,5 +98,35 @@ const Login = ({ onClose }) => {
       </>
   );
 };
+const a = document.createElement('a');
+a.href = 'javascript:kakaoLogin();';
+
+
+document.body.appendChild(a);
+
+// Load the Kakao SDK script dynamically
+const script = document.createElement('script');
+script.src = 'https://developers.kakao.com/sdk/js/kakao.js';
+script.onload = function() {
+    window.Kakao.init('52786c6e3c6921d9668c6d5f297e1a04');
+};
+document.head.appendChild(script);
+
+// Define the kakaoLogin function
+function kakaoLogin() {
+    window.Kakao.Auth.login({
+        scope: 'profile_nickname, profile_image',
+        success: function(authObj) {
+            console.log(authObj);
+            window.Kakao.API.request({
+                url: '/v2/user/me',
+                success: function(res) {
+                    const kakao_account = res.kakao_account;
+                    console.log(kakao_account);
+                }
+            });
+        }
+    });
+}
 
 export default Login;

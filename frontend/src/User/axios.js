@@ -24,3 +24,13 @@ export const axiosLogin = async (email, password) => {
     }
 
 }
+
+
+export const axiosMe = async () => {
+    try {
+        return await instance.get("/me");
+    } catch (error) {
+        throw error;
+    }
+
+}
