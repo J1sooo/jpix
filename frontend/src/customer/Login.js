@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Login.css"; // 로그인 스타일을 포함한 CSS 파일을 import 합니다.
+import "./Login.css";
+import {GoogleLogin} from "@react-oauth/google"; // 로그인 스타일을 포함한 CSS 파일을 import 합니다.
 
 
 const Login = ({ onClose }) => {
@@ -33,41 +34,45 @@ const Login = ({ onClose }) => {
   };
 
 
+
+
     return (
         <>
           <div className="modal-overlay" onClick={onClose}></div>
           {/* 반투명 배경 */}
           <div className="login-modal">
-            <div className="login-form">
-              <h2> JPIX에 로그인</h2>
-              <input
-                  type="text"
-                  placeholder="아이디"
-                  value={username}
-                  onChange={handleUsernameChange}
-              />
-              <input
-                  type="password"
-                  placeholder="비밀번호"
-                  value={password}
-                  onChange={handlePasswordChange}
-              />
+              <div className="login-form">
+                  <h2> JPIX에 로그인</h2>
+                  <input
+                      type="text"
+                      placeholder="아이디"
+                      value={username}
+                      onChange={handleUsernameChange}
+                  />
+                  <input
+                      type="password"
+                      placeholder="비밀번호"
+                      value={password}
+                      onChange={handlePasswordChange}
+                  />
 
-              <button>KakaoTalk으로 로그인</button>
-              <button>Google으로 로그인</button>
-              <button>Facebook으로 로그인</button>
+                  <button>
+                      Google으로 로그인
+                  </button>
 
-              <button onClick={handleLogin}> 아이디로 로그인</button>
-              <Link to="/customer/signup">
-                <button onClick={handleSignUp}>회원가입</button>
-              </Link>
+                  <button>KakaoTalk으로 로그인</button>
+                  <button>Facebook으로 로그인</button>
 
-              <button onClick={onClose}>닫기</button>
-              {/* 모달 닫기 버튼 */}
-            </div>
+                  <button onClick={handleLogin}> 아이디로 로그인</button>
+                  <Link to="/customer/signup">
+                      <button onClick={handleSignUp}>회원가입</button>
+                  </Link>
+
+                  <button onClick={onClose}>닫기</button>
+                  {/* 모달 닫기 버튼 */}
+              </div>
           </div>
         </>
-
     );
 };
 
