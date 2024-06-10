@@ -48,9 +48,9 @@ body {
 }
 
 .search-container {
-  flex-grow: 1;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  width: fit-content;
 }
 
 .search-form {
@@ -59,30 +59,39 @@ body {
   width: 100%;
   max-width: 500px;
   background: #fff;
-  border-radius: 25px;
+  border-radius: 25px 0 0 25px;
   border: 1px solid #ddd;
   overflow: hidden;
+  height: 60px;
 }
 
 .search-input {
   flex-grow: 1;
   border: none;
-  padding: 10px 15px;
+  padding: 10px;
   border-radius: 25px 0 0 25px;
   font-size: 16px;
   outline: none;
+  width:300px;
+
 }
 
 .search-button {
   background: #007bff;
   border: none;
+  border-left: none;
   padding: 10px 15px;
   color: white;
-  font-size: 16px;
-  border-radius: 0 25px 25px 0;
+  font-size: 13px;
   cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 0 25px 25px 0;
+  height: 60px;
 }
 
+.search-button:hover {
+  background-color: #0056b3;
+}
 .nav-buttons {
   display: flex;
   gap: 10px;

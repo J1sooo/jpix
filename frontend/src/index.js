@@ -4,6 +4,8 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 
+import { GoogleOAuthProvider } from "@react-oauth/google";
+
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 root.render(
@@ -11,5 +13,5 @@ root.render(
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </React.StrictMode>,
+  </React.StrictMode>
 );

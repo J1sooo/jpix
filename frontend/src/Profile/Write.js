@@ -35,7 +35,7 @@ function Write() {
                 <input
                     name="title"
                     type="text"
-                    placeholder="동영상 제목"
+                    placeholder="동영상 제목을 입력하세요..."
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
