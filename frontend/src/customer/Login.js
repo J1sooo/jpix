@@ -34,6 +34,7 @@ const Login = ({ onClose }) => {
         const response = await axiosLogin(username, password);
         if (response.status === 200) {
           setIsLogin(true);
+            alert('로그인에 성공하였습니다.')
           navigate("/");
           onClose();
             window.location.reload()
@@ -42,6 +43,7 @@ const Login = ({ onClose }) => {
         if (axios.isAxiosError(error)) {
           if (error.response.status === 401) {
             setLoginError(error.response.data);
+              alert('아이디 혹은 비밀번호가 일치하지않습니다.')
           } else {
             setLoginError(error.message);
           }
@@ -82,11 +84,9 @@ const Login = ({ onClose }) => {
                 onChange={handlePasswordChange}
             />
 
-            <button>KakaoTalk으로 로그인</button>
-            <button>Google으로 로그인</button>
-            <button>Facebook으로 로그인</button>
+            <button onClick={handleLogin}>로그인</button>
 
-            <button onClick={handleLogin}>아이디로 로그인</button>
+
             <Link to="/customer/signup">
               <button onClick={handleSignUp}>회원가입</button>
             </Link>

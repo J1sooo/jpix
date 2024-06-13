@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Recommended.css";
 
-
 function Recommended() {
     const [data, setData] = useState([]);
 
@@ -14,6 +13,16 @@ function Recommended() {
         getpost();
     }, []);
 
+    const handleLike = async (id) => {
+        try {
+            await axios.put(`/board/${id}/like`); // 좋아요 API 경로 수정
+            // 좋아요를 반영하기 위해 다시 데이터를 불러올 수도 있음
+            const updatedPosts = await axios.get("/board/list");
+            setData(updatedPosts.data);
+        } catch (error) {
+            console.error("Error liking post:", error);
+        }
+    };
 
     return (
         <div className="app-container">
@@ -33,7 +42,7 @@ function Recommended() {
                          }}>
                         <div className="video-container" style={{width: '18rem'}}>
                             <video controls autoPlay loop>
-                                <source src={v.filepath} type="video/mp4"/>
+                                <source src={v.filepath} type="video/mp4" />
                             </video>
                         </div>
 

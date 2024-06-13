@@ -21,4 +21,16 @@ public class Board {
     private String filename;
 
     private String filepath;
+
+    private int likes = 0;
+
+    public void incrementLikes() {
+        this.likes++;
+    }
+
+    public void decrementLikes() {
+        if (this.likes > 0) {
+            this.likes--;
+        }
+    }
 }

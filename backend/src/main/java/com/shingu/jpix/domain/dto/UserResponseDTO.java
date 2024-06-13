@@ -21,7 +21,7 @@ public class UserResponseDTO {
         return UserResponseDTO.builder()
                 .id(user.getId())
                 .email(user.getEmail())
-                .name(user.getUsername())
+                .name(user.getNickname())
                 .build();
     }
 }

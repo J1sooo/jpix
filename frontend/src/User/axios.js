@@ -26,6 +26,8 @@ export const axiosLogin = async (email, password) => {
 }
 
 
+
+
 export const axiosMe = async () => {
     try {
         return await instance.get("/me");
@@ -33,4 +35,13 @@ export const axiosMe = async () => {
         throw error;
     }
 
+}
+
+export const axiosLogout = async () => {
+    try {
+        const response = await instance.get("/logout");
+        return response;
+    } catch (error) {
+        throw error;
+    }
 }

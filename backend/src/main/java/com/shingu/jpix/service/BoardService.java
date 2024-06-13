@@ -9,7 +9,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
+
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Service
 public class BoardService {
@@ -37,5 +40,14 @@ public class BoardService {
     // 특정 게시글 삭제
     public void boardDelete(Integer id) {
         boardRepository.deleteById(id);
+    }
+
+    public void toggleLike(Integer id) {
+        Optional<Board> optionalBoard = boardRepository.findById(id);
+        if (optionalBoard.isPresent()) {
+            Board board = optionalBoard.get();
+            board.incrementLikes(); // 좋아요 개수 증가
+            boardRepository.save(board);
+        }
     }
 }

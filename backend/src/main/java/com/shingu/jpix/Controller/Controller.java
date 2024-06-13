@@ -39,4 +39,11 @@ public class Controller {
         List<Board> boards = boardService.boardList();
         return new ResponseEntity<>(boards, HttpStatus.OK);
     }
+
+    // 게시글 좋아요 토글 엔드포인트
+    @PutMapping("/{id}/like")
+    public ResponseEntity<?> toggleLike(@PathVariable Integer id) {
+        boardService.toggleLike(id);
+        return ResponseEntity.ok().build();
+    }
 }

@@ -50,10 +50,10 @@ const SignUp = ({ onClose }) => {
           <h2>회원가입</h2>
 
           <input
-              type="text"
-              placeholder="아이디"
-              value={username}
-              onChange={handleUsernameChange}
+              type="email"
+              placeholder="이메일 아이디"
+              value={email}
+              onChange={handleEmailChange}
           />
           <input
               type="password"
@@ -62,10 +62,10 @@ const SignUp = ({ onClose }) => {
               onChange={handlePasswordChange}
           />
           <input
-              type="email"
-              placeholder="이메일"
-              value={email}
-              onChange={handleEmailChange}
+              type="text"
+              placeholder="닉네임"
+              value={username}
+              onChange={handleUsernameChange}
           />
           <button type="submit">회원가입</button>
 

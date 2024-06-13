@@ -5,7 +5,7 @@ function Settings() {
       <div>
           <h1>회원 관리</h1>
 
-          <Link to="/">
+          <Link to="/logout">
               <button>로그아웃</button>
           </Link>
           <br></br>
