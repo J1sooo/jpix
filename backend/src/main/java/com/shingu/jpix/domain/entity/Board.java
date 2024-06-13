@@ -21,8 +21,12 @@ public class Board {
 
     private String filepath;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     @Column(name = "likes_count")
-    private int likesCount;
+    private int likesCount = 0;
 
     @OneToMany(mappedBy = "board")
     private List<Like> likes;

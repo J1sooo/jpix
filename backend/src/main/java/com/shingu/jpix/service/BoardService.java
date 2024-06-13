@@ -46,7 +46,7 @@ public class BoardService {
         Optional<Board> optionalBoard = boardRepository.findById(id);
         if (optionalBoard.isPresent()) {
             Board board = optionalBoard.get();
-            board.incrementLikes(); // 좋아요 개수 증가
+//            board.incrementLikes(); // 좋아요 개수 증가
             boardRepository.save(board);
         }
     }

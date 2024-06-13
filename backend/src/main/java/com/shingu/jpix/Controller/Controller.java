@@ -1,6 +1,8 @@
 package com.shingu.jpix.Controller;
 
+import com.shingu.jpix.domain.AuthUser;
 import com.shingu.jpix.domain.entity.Board;
+import com.shingu.jpix.domain.entity.User;
 import com.shingu.jpix.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,12 +21,13 @@ public class Controller {
 
     @PostMapping("board/writepro")
     public ResponseEntity<String> boardwrite (
+            @AuthUser User user,
             @RequestParam("title") String title,
             @RequestParam("content") String content,
             @RequestAttribute MultipartFile file) throws Exception{
         try {
-            System.out.println(file);
             Board board = new Board();
+            board.setUser(user);
             board.setTitle(title);
             board.setContent(content);
             boardService.write(board, file);
