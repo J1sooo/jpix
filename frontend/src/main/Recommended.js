@@ -43,7 +43,7 @@ function Recommended() {
                          }}>
                         <div className="video-container" style={{width: '18rem'}}>
                             <video controls autoPlay loop>
-                                <source src={v.filepath} type="video/mp4" />
+                                <source src={v.filepath} type="video/mp4"/>
                             </video>
                         </div>
 
@@ -77,6 +77,9 @@ function Recommended() {
                         </div>
                         <div className="video-info">
                             <p className="card-text">{v.content}</p>
+                        </div>
+                        <div className="video-info">
+                            <p className="card-text">작성자: {v.user.nickname}</p>
                         </div>
                     </div>
 
