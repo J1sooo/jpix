@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Recommended.css";
+import "./Navbar.css"
 
 function Recommended() {
     const [data, setData] = useState([]);

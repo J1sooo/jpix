@@ -1,12 +1,11 @@
 package com.shingu.jpix.domain.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity @Data @Getter @Setter
 public class Board {
@@ -22,15 +21,10 @@ public class Board {
 
     private String filepath;
 
-    private int likes = 0;
+    @Column(name = "likes_count")
+    private int likesCount;
 
-    public void incrementLikes() {
-        this.likes++;
-    }
+    @OneToMany(mappedBy = "board")
+    private List<Like> likes;
 
-    public void decrementLikes() {
-        if (this.likes > 0) {
-            this.likes--;
-        }
-    }
 }

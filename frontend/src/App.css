@@ -247,4 +247,41 @@ a {
   vertical-align: middle;
 }
 
+/* 다크모드에서도 검색창은 라이트모드로 유지 /
+body.dark-mode .search-form {
+  background: #fff;
+  border: 1px solid #ddd;
+}
+
+body.dark-mode .search-input {
+  background: #fff;
+  color: #000;
+}
+
+body.dark-mode .search-button {
+  background: #007bff;
+  color: white;
+}
+
+/ 나머지 스타일 유지 */
+body.dark-mode .menu-item {
+  color: white;
+}
+/* App.css /
+
+/ 다크모드 스타일 */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-mode .white-nav {
+  background-color: #1e1e1e;
+  border-bottom: 1px solid #333;
+}
+
+body.dark-mode .brand-name {
+  color: #ffffff;
+}
+
 

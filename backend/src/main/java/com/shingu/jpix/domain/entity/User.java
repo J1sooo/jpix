@@ -36,6 +36,9 @@ public class User implements UserDetails {
 
     @Column(name = "role", nullable = false, columnDefinition = "VARCHAR(20) DEFAULT 'user'")
     private String role;
+
+    @OneToMany(mappedBy = "user")
+    private List<Like> likes;
     //권한 반환
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

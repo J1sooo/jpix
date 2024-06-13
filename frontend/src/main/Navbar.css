@@ -1,0 +1,241 @@
+/* 일반 모드 스타일 */
+body {
+    background-color: #ffffff;
+    color: #000000; /* 기본 텍스트 색상 */
+}
+
+/* 다크 모드 스타일 */
+.dark-mode {
+    background-color: #121212;
+    color: #ffffff; /* 기본 텍스트 색상 */
+}
+
+/* 다크 모드에서 특정 요소에 대한 스타일 설정 */
+.dark-mode .profile-page,
+.dark-mode .profile-page .profile-header,
+.dark-mode .profile-page .profile-info,
+.dark-mode .profile-page .profile-name h2,
+.dark-mode .profile-page .profile-stats span,
+.dark-mode .profile-page .profile-bio p,
+.dark-mode .profile-page .edit-profile-btn {
+    color: #ffffff;
+}
+
+/* 다크 모드에서 추가적인 스타일 설정 */
+.dark-mode .white-nav {
+    background-color: #333;
+    border-bottom: 1px solid #444;
+}
+
+.dark-mode .nav-buttons .btn {
+    background-color: #444;
+    color: #ffffff; /* 버튼 텍스트 색상 */
+}
+
+.dark-mode .nav-buttons .btn-primary {
+    background-color: #007bff;
+    color: #ffffff; /* 버튼 텍스트 색상 */
+}
+
+.dark-mode .nav-buttons .btn-secondary {
+    background-color: #6c757d;
+    color: #ffffff; /* 버튼 텍스트 색상 */
+}
+
+.dark-mode .profile-pic img {
+    border: 2px solid #ffffff;
+}
+
+.dark-mode .menu-item {
+    color: #ffffff; /* 메뉴 아이템 텍스트 색상 */
+}
+
+.dark-mode .menu-item.active {
+    background-color: rgb(31, 47, 220);
+    color: #ffffff; /* 활성 메뉴 아이템 텍스트 색상 */
+}
+
+.dark-mode .search-input {
+    background-color: #444;
+    color: #ffffff; /* 검색 입력 텍스트 색상 */
+}
+
+.dark-mode .search-button {
+    background-color: #007bff;
+    color: #ffffff; /* 검색 버튼 텍스트 색상 */
+}
+
+.dark-mode img {
+    filter: invert(1);
+}
+
+/* Navbar specific styles */
+.white-nav {
+    width: 100%;
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    padding: 16px 24px;
+    box-sizing: border-box;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.search-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    border-radius: 25px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+}
+
+.search-input {
+    flex-grow: 1;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 25px 0 0 25px;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-button {
+    background: #007bff;
+    border: none;
+    padding: 10px 15px;
+    color: white;
+    font-size: 16px;
+    border-radius: 0 25px 25px 0;
+    cursor: pointer;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-buttons .btn {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.nav-buttons .btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.nav-buttons .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.nav-buttons .settings-link {
+    color: white;
+    text-decoration: none;
+}
+
+/* Left menu specific styles */
+.left-menu {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    width: 100px;
+    height: 100%;
+    margin-top: 50px;
+    overflow: auto;
+    position: fixed;
+}
+
+.left-menu .menu-item {
+    font-size: 1.2rem;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.left-menu .menu-item.active {
+    font-weight: bold;
+}
+
+.left-menu .menu-item:hover {
+    text-decoration: underline;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+}
+
+.menu-item img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.menu-item.active {
+    background-color: rgb(31, 47, 220);
+    color: white;
+    border-color: black;
+}
+
+.menu-item a {
+    color: inherit;
+    text-decoration: none;
+}
+/* 다크 모드 토글 버튼 스타일 */
+.dark-mode-toggle {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.dark-mode-toggle:hover {
+    background-color: #0056b3;
+}
+
+/* Navbar.css */
+
+/* 기본 로고 색상 */
+.brand-name {
+    color: #000000; /* 검은색 */
+}
+
+/* 다크 모드 로고 색상 */
+.dark-mode .brand-name {
+    color: #ffffff; /* 흰색 */
+}

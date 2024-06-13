@@ -50,4 +50,9 @@ public class BoardService {
             boardRepository.save(board);
         }
     }
+
+    public Board findBoardById(Integer id) {
+        Optional<Board> boardOptional = boardRepository.findById(id);
+        return boardOptional.orElseThrow(() -> new RuntimeException("게시물을 찾을 수 없습니다. ID: " + id));
+    }
 }
