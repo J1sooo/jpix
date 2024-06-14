@@ -9,11 +9,11 @@ import {RecoilRoot} from "recoil";
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
       <RecoilRoot>
     <BrowserRouter>
       <App />
     </BrowserRouter>
       </RecoilRoot>
-  </React.StrictMode>,
+  // </React.StrictMode>,
 );

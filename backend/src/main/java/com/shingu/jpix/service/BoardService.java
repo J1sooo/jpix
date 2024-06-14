@@ -28,8 +28,10 @@ public class BoardService {
     }
 
     // 게시글 리스트 처리
-    public List<Board> boardList(){
-        return boardRepository.findAll();
+    public List<Board> boardList(int id){
+        if(id < 0) return boardRepository.BoardList();
+        else return  boardRepository.BoardListWithId(id);
+
     }
 
     // 특정 게시글 불러오기
