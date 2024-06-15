@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import "./Recommended.css";
 import "./Navbar.css";
+import {Link} from "react-router-dom";
 
 function Recommended() {
     const [data, setData] = useState([]);
@@ -100,11 +101,12 @@ function Recommended() {
                             paddingRight: "25px",
                         }}
                     >
+                        <Link to={`/video/`+v.id}>
                         <div className="video-container" style={{width: "18rem"}}>
                             <video ref={(el) => (videoRefs.current[idx] = el)} playsInline preload="auto" loop>
                                 <source src={v.filepath} type="video/mp4"/>
                             </video>
-                        </div>
+                        </div></Link>
                         <div className="d-flex justify-content-around">
                             {/* 좋아요, 공유 등의 버튼 */}
                         </div>

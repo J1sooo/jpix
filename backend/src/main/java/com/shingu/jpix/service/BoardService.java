@@ -4,7 +4,10 @@ import com.shingu.jpix.domain.entity.Board;
 import com.shingu.jpix.repository.BoardRepository;
 import com.shingu.jpix.s3.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -35,7 +38,7 @@ public class BoardService {
     }
 
     // 특정 게시글 불러오기
-    public Board boardView(Integer id) {
+    public Board boardView(int id) {
         return boardRepository.findById(id).get();
     }
 

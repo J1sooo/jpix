@@ -7,6 +7,7 @@ import com.shingu.jpix.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,7 +38,7 @@ public class Controller {
 //            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @GetMapping("/board/list")
+    @GetMapping("board/list")
     public ResponseEntity<List<Board>> boardList(@RequestParam int id){
         List<Board> board = boardService.boardList(id);
         return new ResponseEntity<>(board, HttpStatus.OK);
@@ -49,6 +50,11 @@ public class Controller {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("board/video/{id}")
+    public ResponseEntity<Board> boardView(@PathVariable int id) {
+        Board board = boardService.boardView(id);
+        return ResponseEntity.ok(board);
+    }
 
     // 게시글 좋아요 토글 엔드포인트
     @PutMapping("/{id}/like")
