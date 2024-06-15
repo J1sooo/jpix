@@ -23,6 +23,8 @@ public class UserRequestDTO {
 
         @NotBlank(message = "이름은 필수값입니다.")
         private String nickname;
+
+        private String profileImage;
     }
 
 //    @Data

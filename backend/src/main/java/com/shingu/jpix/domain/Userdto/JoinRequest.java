@@ -25,6 +25,8 @@ public class JoinRequest {
 
     @NotBlank(message = "닉네임이 비어있습니다.")
     private String nickname;
+
+    private String profileImage;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -45,6 +47,7 @@ public class JoinRequest {
                 .password(encodedPassword)
                 .username(this.nickname)
                 .role("USER")
+                .profileImage(this.profileImage)
                 .build();
     }
 }

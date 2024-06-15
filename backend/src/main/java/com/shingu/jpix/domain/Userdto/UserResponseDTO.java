@@ -22,6 +22,7 @@ public class UserResponseDTO {
                 .id(user.getId())
                 .email(user.getEmail())
                 .name(user.getNickname())
+                .profileImage(user.getProfileImage())
                 .build();
     }
 }

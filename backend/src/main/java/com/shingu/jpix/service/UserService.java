@@ -49,7 +49,6 @@ public class UserService {
      * loginId, nickname 중복 체크는 Controller에서 진행 => 에러 메세지 출력을 위해
      */
     public User join(JoinRequest req) {
-        System.out.println(req.getPassword());
         String encodePassword = bCryptPasswordEncoder.encode(req.getPassword());
         return userRepository.save(req.toEntity(encodePassword));
     }
@@ -78,6 +77,7 @@ public class UserService {
                 .email(dto.getEmail())
                 .password(bCryptPasswordEncoder.encode(dto.getPassword()))
                 .username(dto.getNickname())
+                .profileImage(dto.getProfileImage())
                 .build();
 
         user = userRepository.save(user);

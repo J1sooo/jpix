@@ -12,7 +12,7 @@ function Recommended() {
     const getPost = async () => {
         setIsLoading(true);
         try {
-            const response = await axios.get(`/board1/list?id=${data.length > 0 ? data[data.length - 1].id : -1}`);
+            const response = await axios.get(`/board/list?id=${data.length > 0 ? data[data.length - 1].id : -1}`);
             if (response.data.length > 0) {
                 setData((prevData) => [...prevData, ...response.data]);
             } else {
@@ -73,6 +73,16 @@ function Recommended() {
         };
     }, [data]); // data가 변경될 때마다 실행
 
+    //여기서부터 삭제 하는 코드
+    const boardDelete = async (id) => {
+        try {
+            await axios.delete(`/board/delete/${id}`);
+            setData((prevData) => prevData.filter((post) => post.id !== id));
+        } catch (error) {
+            console.error("Error deleting post:", error);
+        }
+    }; // 여기까지
+
     return (
         <div className="app-container">
             <div className="main">
@@ -90,9 +100,9 @@ function Recommended() {
                             paddingRight: "25px",
                         }}
                     >
-                        <div className="video-container" style={{ width: "18rem" }}>
+                        <div className="video-container" style={{width: "18rem"}}>
                             <video ref={(el) => (videoRefs.current[idx] = el)} playsInline preload="auto" loop>
-                                <source src={v.filepath} type="video/mp4" />
+                                <source src={v.filepath} type="video/mp4"/>
                             </video>
                         </div>
                         <div className="d-flex justify-content-around">
@@ -107,6 +117,8 @@ function Recommended() {
                         <div className="video-info">
                             <p className="card-text">작성자: {v.user.nickname}</p>
                         </div>
+                        <button onClick={() => boardDelete(v.id)} className="delete-button">삭제</button>
+                        {/*이거가져가면됨*/}
                     </div>
                 ))}
                 {isLoading && <div>로딩 중...</div>}

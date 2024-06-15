@@ -37,12 +37,18 @@ public class Controller {
 //            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @GetMapping("/board1/list")
+    @GetMapping("/board/list")
     public ResponseEntity<List<Board>> boardList(@RequestParam int id){
-        System.out.println(id);
-        List<Board> boards = boardService.boardList(id);
-        return new ResponseEntity<>(boards, HttpStatus.OK);
+        List<Board> board = boardService.boardList(id);
+        return new ResponseEntity<>(board, HttpStatus.OK);
     }
+
+    @RequestMapping("board/delete/{id}")
+    public ResponseEntity<Board> boardDelete(@PathVariable int id) {
+        boardService.boardDelete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 
     // 게시글 좋아요 토글 엔드포인트
     @PutMapping("/{id}/like")
