@@ -38,8 +38,9 @@ public class Controller {
         }
     }
     @GetMapping("/board1/list")
-    public ResponseEntity<List<Board>> boardList(){
-        List<Board> boards = boardService.boardList();
+    public ResponseEntity<List<Board>> boardList(@RequestParam int id){
+        System.out.println(id);
+        List<Board> boards = boardService.boardList(id);
         return new ResponseEntity<>(boards, HttpStatus.OK);
     }
 
