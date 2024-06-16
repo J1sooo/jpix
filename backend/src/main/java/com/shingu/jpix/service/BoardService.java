@@ -41,11 +41,22 @@ public class BoardService {
 
         board.setTitle(title);
         board.setContent(content);
-        String url = videoService.saveVideo(file, "file");
-        board.setFilepath(url);
+
+        if (file != null && !file.isEmpty()) {
+            // 새 파일이 업로드된 경우
+            String url = videoService.saveVideo(file, "file");
+            board.setFilepath(url);
+        } else {
+            // 파일이 업로드되지 않은 경우 기존 파일을 유지하도록 처리
+            if (board.getFilepath() == null || board.getFilepath().isEmpty()) {
+                // 기존에 파일이 없는 경우의 처리
+                board.setFilepath(null); // 혹은 기존 파일 경로 유지 로직 추가
+            }
+        }
 
         return boardRepository.save(board);
     }
+
 
     // 특정 게시글 삭제
     public void boardDelete(Integer id) {
