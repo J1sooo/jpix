@@ -2,13 +2,14 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import "./Recommended.css";
 import "./Navbar.css";
-import {Link} from "react-router-dom";
+import {Link, useNavigate  } from "react-router-dom";
 
 function Recommended() {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState([])
     const [isLoading, setIsLoading] = useState(false);
     const videoRefs = useRef([]);
     const endRef = useRef(null);
+    const Navigate = useNavigate();
 
     const getPost = async () => {
         setIsLoading(true);
@@ -76,6 +77,9 @@ function Recommended() {
 
     //여기서부터 삭제 하는 코드
     const boardDelete = async (id) => {
+        const confirmDelete = window.confirm("정말로 삭제하시겠습니까?");
+        if (!confirmDelete) return;
+
         try {
             await axios.delete(`/board/delete/${id}`);
             setData((prevData) => prevData.filter((post) => post.id !== id));
@@ -83,6 +87,11 @@ function Recommended() {
             console.error("Error deleting post:", error);
         }
     }; // 여기까지
+
+
+    const boardModify = (id) => {
+        Navigate(`/modify/${id}`);
+    };
 
     return (
         <div className="app-container">
@@ -101,12 +110,13 @@ function Recommended() {
                             paddingRight: "25px",
                         }}
                     >
-                        <Link to={`/video/`+v.id}>
-                        <div className="video-container" style={{width: "18rem"}}>
-                            <video ref={(el) => (videoRefs.current[idx] = el)} playsInline preload="auto" loop>
-                                <source src={v.filepath} type="video/mp4"/>
-                            </video>
-                        </div></Link>
+                        <Link to={`/video/` + v.id}>
+                            <div className="video-container" style={{width: "18rem"}}>
+                                <video ref={(el) => (videoRefs.current[idx] = el)} playsInline preload="auto" loop>
+                                    <source src={v.filepath} type="video/mp4"/>
+                                </video>
+                            </div>
+                        </Link>
                         <div className="d-flex justify-content-around">
                             {/* 좋아요, 공유 등의 버튼 */}
                         </div>
@@ -120,6 +130,8 @@ function Recommended() {
                             <p className="card-text">작성자: {v.user.nickname}</p>
                         </div>
                         <button onClick={() => boardDelete(v.id)} className="delete-button">삭제</button>
+
+                        <button onClick={() => boardModify(v.id)} className="modify-button">수정</button>
                         {/*이거가져가면됨*/}
                     </div>
                 ))}

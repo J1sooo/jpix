@@ -12,6 +12,7 @@ import Navbar from "./main/Navbar";
 import SignUp from "./customer/SignUp"
 import UseCheckMe from "./User/Checkme";
 import Video from "./main/video";
+import Modify from "./Profile/Modify";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path="/customer" element={<Login/>} />
           <Route path="/" element={<Recommended />} />
           <Route path="/video/:id" element={<Video />} />
+          <Route path="/modify/:id" element={<Modify />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/following" element={<Following />} />
           <Route path="/more" element={<More />} />

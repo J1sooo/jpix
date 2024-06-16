@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ImageSaveDto {
+public class VideoSaveDto {
     private List<MultipartFile> images = new ArrayList<>();
 
     private MultipartFile image;

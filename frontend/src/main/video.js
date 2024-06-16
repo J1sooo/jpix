@@ -4,13 +4,13 @@ import axios from 'axios';
 
 function Video() {
     const { id } = useParams();
-    const [videoData, setVideoData] = useState(null);
+    const [data, setData] = useState(null);
 
     useEffect(() => {
         const getVideo = async () => {
             try {
                 const response = await axios.get(`/board/video/`+id);
-                setVideoData(response.data);
+                setData(response.data);
             } catch (error) {
                 console.error('Error fetching video data:', error);
             }
@@ -19,7 +19,7 @@ function Video() {
         getVideo();
     }, [id]);
 
-    if (!videoData) {
+    if (!data) {
         return <div>No video data found.</div>;
     }
 
@@ -27,14 +27,13 @@ function Video() {
         <div className="video-detail-container">
             <div className="video-player">
                 <video controls>
-                    <source src={videoData.filepath} type="video/mp4" />
-                    Your browser does not support the video tag.
+                    <source src={data.filepath} type="video/mp4" />
                 </video>
             </div>
             <div className="video-info">
-                <h3>{videoData.title}</h3>
-                <p>{videoData.content}</p>
-                <p>작성자: {videoData.user.nickname}</p>
+                <h3>{data.title}</h3>
+                <p>{data.content}</p>
+                <p>작성자: {data.user.nickname}</p>
             </div>
         </div>
     );

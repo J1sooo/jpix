@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ImageController {
+public class VideoController {
     @Autowired
-    ImageService imageService;
+    VideoService videoService;
 
     @PostMapping("/image")
-    public ResponseEntity<String> uploadImage(@ModelAttribute ImageSaveDto dto) {
-        String imageUrl = imageService.saveImage(dto.getImage(), "img");
+    public ResponseEntity<String> uploadImage(@ModelAttribute VideoSaveDto dto) {
+        String imageUrl = videoService.saveVideo(dto.getImage(), "img");
         return new ResponseEntity<>(imageUrl, HttpStatus.OK);
     }
 }

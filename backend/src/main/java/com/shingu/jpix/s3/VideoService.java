@@ -13,12 +13,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class ImageService {
+public class VideoService {
 
     @Value("${spring.cloud.aws.s3.bucket}")
     private String bucketName;
@@ -26,11 +25,11 @@ public class ImageService {
 
     // 이미지 여러개 업로드
     @Transactional
-    public List<String> saveManyImage(ImageSaveDto saveDto, String saveDir) {
+    public List<String> saveManyImage(VideoSaveDto saveDto, String saveDir) {
         List<String> resultList = new ArrayList<>();
 
         for (MultipartFile multipartFile : saveDto.getImages()) {
-            String value = saveImage(multipartFile, saveDir);
+            String value = saveVideo(multipartFile, saveDir);
             resultList.add(value);
         }
 
@@ -39,7 +38,7 @@ public class ImageService {
 
     // 이미지 1개 업로드
     @Transactional
-    public String saveImage(MultipartFile multipartFile, String saveDir) {
+    public String saveVideo(MultipartFile multipartFile, String saveDir) {
         String fileName = multipartFile.getOriginalFilename();
         String FileExt = fileName.substring(fileName.lastIndexOf("."));
         String uuidName = UUID.randomUUID() + FileExt;

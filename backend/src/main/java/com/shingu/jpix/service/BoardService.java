@@ -2,30 +2,23 @@ package com.shingu.jpix.service;
 
 import com.shingu.jpix.domain.entity.Board;
 import com.shingu.jpix.repository.BoardRepository;
-import com.shingu.jpix.s3.ImageService;
+import com.shingu.jpix.s3.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
-
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Service
 public class BoardService {
     @Autowired
     private BoardRepository boardRepository;
     @Autowired
-    private ImageService imageService;
+    private VideoService videoService;
     // 글 작성 처리
     public void write(Board board, MultipartFile file) throws Exception{
-        String url = imageService.saveImage(file, "file");
+        String url = videoService.saveVideo(file, "file");
         board.setFilepath(url);
         boardRepository.save(board);
     }
@@ -40,6 +33,17 @@ public class BoardService {
     // 특정 게시글 불러오기
     public Board boardView(int id) {
         return boardRepository.findById(id).get();
+    }
+
+    public Board boardModify(int id, String title, String content, MultipartFile file) {
+        Board board = boardRepository.findById(id).orElseThrow(() -> new RuntimeException("Board not found"));
+
+        board.setTitle(title);
+        board.setContent(content);
+        String url = videoService.saveVideo(file, "file");
+        board.setFilepath(url);
+
+        return boardRepository.save(board);
     }
 
     // 특정 게시글 삭제
