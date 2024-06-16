@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class BoardService {
@@ -50,6 +51,7 @@ public class BoardService {
     public void boardDelete(Integer id) {
         boardRepository.deleteById(id);
     }
+
 
     public void toggleLike(Integer id) {
         Optional<Board> optionalBoard = boardRepository.findById(id);

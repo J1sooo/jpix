@@ -1,15 +1,18 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { UserState } from "../recoil/RecoilState"; // Recoil에서 사용자 정보 상태 가져오기
 import "./Recommended.css";
 import "./Navbar.css";
-import {Link, useNavigate  } from "react-router-dom";
 
 function Recommended() {
-    const [data, setData] = useState([])
+    const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const videoRefs = useRef([]);
     const endRef = useRef(null);
-    const Navigate = useNavigate();
+    const navigate = useNavigate();
+    const loggedInUser = useRecoilValue(UserState); // Recoil을 사용하여 현재 로그인 사용자 정보 가져오기
 
     const getPost = async () => {
         setIsLoading(true);
@@ -75,7 +78,6 @@ function Recommended() {
         };
     }, [data]); // data가 변경될 때마다 실행
 
-    //여기서부터 삭제 하는 코드
     const boardDelete = async (id) => {
         const confirmDelete = window.confirm("정말로 삭제하시겠습니까?");
         if (!confirmDelete) return;
@@ -86,11 +88,10 @@ function Recommended() {
         } catch (error) {
             console.error("Error deleting post:", error);
         }
-    }; // 여기까지
-
+    };
 
     const boardModify = (id) => {
-        Navigate(`/modify/${id}`);
+        navigate(`/modify/${id}`);
     };
 
     return (
@@ -110,10 +111,10 @@ function Recommended() {
                             paddingRight: "25px",
                         }}
                     >
-                        <Link to={`/video/` + v.id}>
-                            <div className="video-container" style={{width: "18rem"}}>
+                        <Link to={`/video/${v.id}`}>
+                            <div className="video-container" style={{ width: "18rem" }}>
                                 <video ref={(el) => (videoRefs.current[idx] = el)} playsInline preload="auto" loop>
-                                    <source src={v.filepath} type="video/mp4"/>
+                                    <source src={v.filepath} type="video/mp4" />
                                 </video>
                             </div>
                         </Link>
@@ -129,10 +130,6 @@ function Recommended() {
                         <div className="video-info">
                             <p className="card-text">작성자: {v.user.nickname}</p>
                         </div>
-                        <button onClick={() => boardDelete(v.id)} className="delete-button">삭제</button>
-
-                        <button onClick={() => boardModify(v.id)} className="modify-button">수정</button>
-                        {/*이거가져가면됨*/}
                     </div>
                 ))}
                 {isLoading && <div>로딩 중...</div>}

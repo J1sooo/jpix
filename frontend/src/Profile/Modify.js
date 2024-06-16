@@ -7,6 +7,7 @@ function Modify() {
     const { id } = useParams();
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
+    const [filepath, setFilepath] = useState('');
     const [file, setFile] = useState(null);
     const navigate = useNavigate();
 
@@ -17,7 +18,7 @@ function Modify() {
                 const data = response.data;
                 setTitle(data.title);
                 setContent(data.content);
-                // 파일은 기존 파일명을 표시할 수 있지만, 새 파일을 업로드해야 합니다.
+                setFilepath(data.filepath); // filepath 설정
             } catch (error) {
                 console.error('Error fetching post data:', error);
             }
@@ -64,6 +65,11 @@ function Modify() {
                     onChange={(e) => setContent(e.target.value)}
                     required
                 />
+                <div>
+                    {filepath && (
+                        <p>현재 파일: {filepath}</p>
+                    )}
+                </div>
                 <input
                     type="file"
                     onChange={(e) => setFile(e.target.files[0])}

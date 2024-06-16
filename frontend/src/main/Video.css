@@ -1,0 +1,128 @@
+.video-detail-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: auto;
+    height: calc(100vh - 40px); /* 화면 높이에 맞춤 */
+    overflow: hidden; /* 자식 요소들의 스크롤 설정 */
+}
+
+.video-player {
+    flex: 1;
+    max-width: 500px;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    background: black;
+    position: sticky;
+    top: 20px; /* 부모 요소의 패딩 크기와 동일하게 설정 */
+}
+
+.video-player video {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.video-info {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: calc(100vh - 80px); /* 부모 요소의 높이에서 패딩을 뺀 값 */
+    overflow-y: auto; /* 세로 스크롤 가능 */
+}
+
+.video-info h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.video-info p {
+    margin: 10px 0;
+    color: #555;
+    line-height: 1.6;
+}
+
+.video-info .author {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.comment-section {
+    margin-top: 20px;
+}
+
+.comment-section h4 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.comment-section h4 span {
+    margin-left: 10px;
+}
+
+.comment {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comment p {
+    margin: 0;
+    color: #555;
+}
+
+.comment .comment-author {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.comment-input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.comment-input textarea {
+    resize: none;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    width: 100%;
+    max-width: 400px;
+    height: 50px;
+}
+
+.comment-input button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.comment-input button:hover {
+    background-color: #0056b3;
+}

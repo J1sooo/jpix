@@ -11,7 +11,7 @@ import Write from "./Profile/Write";
 import Navbar from "./main/Navbar";
 import SignUp from "./customer/SignUp"
 import UseCheckMe from "./User/Checkme";
-import Video from "./main/video";
+import Video from "./main/Video";
 import Modify from "./Profile/Modify";
 
 
