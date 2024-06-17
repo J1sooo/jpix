@@ -9,7 +9,6 @@ const SignUp = ({ onClose }) => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
-
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
@@ -27,23 +26,18 @@ const SignUp = ({ onClose }) => {
     const data = {
       email: email,
       password: password,
-      nickname: username,
-    };
-    try {
-      const response = await axios.post("/user/join", data);
-      if (response.status === 200) {
-        alert("회원가입에 성공하였습니다.");
+      nickname: username
+    }
+    e.preventDefault();
+    try{
+      const response = await axios.post('/user/join', data)
+      if(response.status === 200) {
+        alert('회원가입에 성공하였습니다.')
       }
     } catch (error) {
       alert("회원가입에 실패하였습니다.");
     }
     console.log("회원가입 정보:", { username, password, email });
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      handleSignUp(e);
-    }
   };
 
   return (
@@ -53,26 +47,25 @@ const SignUp = ({ onClose }) => {
             <form className="login-form" onSubmit={handleSignUp}>
               <h2>회원가입</h2>
 
-              <input
-                  type="email"
-                  placeholder="이메일 아이디"
-                  value={email}
-                  onChange={handleEmailChange}
-              />
-              <input
-                  type="password"
-                  placeholder="비밀번호"
-                  value={password}
-                  onChange={handlePasswordChange}
-              />
-              <input
-                  type="text"
-                  placeholder="닉네임"
-                  value={username}
-                  onChange={handleUsernameChange}
-                  onKeyPress={handleKeyPress}
-              />
-              <button type="submit">회원가입</button>
+          <input
+              type="email"
+              placeholder="이메일 아이디"
+              value={email}
+              onChange={handleEmailChange}
+          />
+          <input
+              type="password"
+              placeholder="비밀번호"
+              value={password}
+              onChange={handlePasswordChange}
+          />
+          <input
+              type="text"
+              placeholder="닉네임"
+              value={username}
+              onChange={handleUsernameChange}
+          />
+          <button type="submit">회원가입</button>
 
               <Link to="/">
                 <button onClick={onClose}>닫기</button>{" "}

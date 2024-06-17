@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { UserState } from "../recoil/RecoilState"; // Recoil에서 사용자 정보 상태 가져오기
 import "./Recommended.css";
-import "./Navbar.css"
-import {Link, useNavigate} from "react-router-dom";
-import {useRecoilValue} from "recoil";
-import {UserState} from "../recoil/RecoilState";
+import "./Navbar.css";
 
 function Recommended() {
     const [data, setData] = useState([]);
@@ -79,10 +79,14 @@ function Recommended() {
         };
     }, [data]); // data가 변경될 때마다 실행
 
-    const Like = async (boardId) => {
+    const Like = async (userId, boardId) => {
         try {
-            await axios.post('/likes/'+ boardId,
-                );
+            await axios.post('/like', null, {
+                params: {
+                    userId: userId,
+                    boardId: boardId
+                }
+            });
             setLiked(true);
         } catch (error) {
             console.error('좋아요 요청 실패:', error);

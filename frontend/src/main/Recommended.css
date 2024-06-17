@@ -4,23 +4,40 @@
 }
 
 .video-container-wrapper {
+  display: flex;
   justify-content: center;
+  align-items: flex-start;
   margin-bottom: 20px;
+  border: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 10px 0;
+  margin-bottom: 40px;
+  padding-bottom: 50px;
+  padding-right: 25px;
+  width: 500px;
+}
 
+.content-wrapper {
+  display: flex;
+  flex-direction: row; /* 가로 정렬 */
+  align-items: flex-start;
 }
 
 .video-container {
-  width: 300px;
-  height: 440px;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
   overflow: hidden;
   position: relative;
   background-color: #fff; /* Optional: Add a background color */
-
+  margin-right: 50px;
 }
 
 .video-container video {
-  width: 300px;
-  height: 440px;
+  width: 100%;
+  height: auto;
   object-fit: cover;
 }
 
@@ -42,7 +59,6 @@
   flex-direction: column;
 }
 
-
 .video-info {
   text-align: center;
   color: #000; /* Optional: Adjust text color */
@@ -63,12 +79,14 @@ body, html {
 }
 
 .card-button {
-  margin-top: 30px;
-  margin-right: 30px;
+  margin-top: 65px;
+  margin-bottom: 70px;
 }
 
-.justify-content-around {
-
+.d-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .like-button {

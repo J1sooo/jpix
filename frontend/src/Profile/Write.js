@@ -24,14 +24,10 @@ function Write() {
             });
             console.log(response.data);
             // 성공적으로 작성한 후의 처리 로직 추가 (예: 페이지 이동)
-            alert("글 작성이 완료되었습니다.")
-            window.location.href = "/";
         } catch (error) {
             console.error('Error submitting the form', error);
         }
     };
-
-
 
     return (
         <div className="layout">
@@ -58,6 +54,5 @@ function Write() {
         </div>
     );
 }
-
 
 export default Write;
