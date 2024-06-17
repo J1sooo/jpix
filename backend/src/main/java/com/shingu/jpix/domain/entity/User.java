@@ -40,9 +40,6 @@ public class User implements UserDetails {
     @Column(name = "profileimage")
     private String profileImage;
 
-    @OneToMany(mappedBy = "user")
-    private List<Like> likes;
-    //권한 반환
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role));

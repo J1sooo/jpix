@@ -70,3 +70,16 @@ body, html {
 .justify-content-around {
 
 }
+
+.like-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.like-button.liked {
+  background-color: #dc3545;
+}

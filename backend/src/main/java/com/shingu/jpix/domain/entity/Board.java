@@ -15,6 +15,8 @@ public class Board {
 
     private String title;
 
+    private String name;
+
     private String content;
 
     private String filename;
@@ -24,11 +26,5 @@ public class Board {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
-    @Column(name = "likes_count")
-    private int likesCount = 0;
-
-    @OneToMany(mappedBy = "board")
-    private List<Like> likes;
 
 }

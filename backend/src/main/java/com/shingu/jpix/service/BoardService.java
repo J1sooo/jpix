@@ -64,14 +64,6 @@ public class BoardService {
     }
 
 
-    public void toggleLike(Integer id) {
-        Optional<Board> optionalBoard = boardRepository.findById(id);
-        if (optionalBoard.isPresent()) {
-            Board board = optionalBoard.get();
-//            board.incrementLikes(); // 좋아요 개수 증가
-            boardRepository.save(board);
-        }
-    }
 
     public Board findBoardById(Integer id) {
         Optional<Board> boardOptional = boardRepository.findById(id);

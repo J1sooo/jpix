@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
-import { useRecoilValue } from "recoil";
-import { UserState } from "../recoil/RecoilState"; // Recoil에서 사용자 정보 상태 가져오기
 import "./Recommended.css";
-import "./Navbar.css";
+import "./Navbar.css"
+import {Link, useNavigate} from "react-router-dom";
+import {useRecoilValue} from "recoil";
+import {UserState} from "../recoil/RecoilState";
 
 function Recommended() {
     const [data, setData] = useState([]);
