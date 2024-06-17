@@ -79,14 +79,10 @@ function Recommended() {
         };
     }, [data]); // data가 변경될 때마다 실행
 
-    const Like = async (userId, boardId) => {
+    const Like = async (boardId) => {
         try {
-            await axios.post('/like', null, {
-                params: {
-                    userId: userId,
-                    boardId: boardId
-                }
-            });
+            await axios.post('/likes/'+ boardId,
+                );
             setLiked(true);
         } catch (error) {
             console.error('좋아요 요청 실패:', error);
@@ -132,7 +128,7 @@ function Recommended() {
                         <button
                             id="likeButton"
                             className={v.liked ? 'liked' : ''}
-                            onClick={() => Like(loggedInUser.id, v.id)}
+                            onClick={() => Like(v.id)}
                             disabled={v.liked}
                         >
                             {v.liked ? '❤️' : '♡'}

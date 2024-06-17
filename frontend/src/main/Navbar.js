@@ -23,6 +23,15 @@ const Navbar = ({ onLoginClick }) => {
     }
   };
 
+  const handleMenuClick = (path) => {
+    if (!isLogin) {
+      alert("로그인이 필요한 서비스입니다.");
+    } else {
+      // 로그인 상태에서만 해당 메뉴로 이동
+      window.location.href = path; // 새로고침이 필요한 경우
+    }
+  };
+
   return (
       <div className="App">
         <div className="white-nav">
@@ -81,147 +90,96 @@ const Navbar = ({ onLoginClick }) => {
         </div>
 
         <div className="left-menu">
-          {isLogin && (
-              <>
-                <div
-                    className={`menu-item ${
-                        location.pathname === "/recommended" ? "active" : ""
-                    }`}
-                >
-                  <Link to="/">
-                    <img
-                        src="/image/recommended.png"
-                        alt="추천"
-                        style={{
-                          width: "24px",
-                          height: "24px",
-                          marginRight: "10px",
-                        }}
-                    />
-                    <p>추천</p>
-                  </Link>
-                </div>
-                <br />
-                <div
-                    className={`menu-item ${
-                        location.pathname === "/profile" ? "active" : ""
-                    }`}
-                >
-                  <Link to="/profile">
-                    <img
-                        src="/image/profile.png"
-                        alt="프로필"
-                        style={{
-                          width: "24px",
-                          height: "24px",
-                          marginRight: "10px",
-                        }}
-                    />
-                    <p>프로필</p>
-                  </Link>
-                </div>
-                <br />
-                <div
-                    className={`menu-item ${
-                        location.pathname === "/write" ? "active" : ""
-                    }`}
-                >
-                  <Link to="/write">
-                    <img
-                        src="/image/upload.png"
-                        alt="업로드"
-                        style={{
-                          width: "24px",
-                          height: "24px",
-                          marginRight: "10px",
-                        }}
-                    />
-                    <p>업로드</p>
-                  </Link>
-                </div>
-                <br />
-                <div
-                    className={`menu-item ${
-                        location.pathname === "/following" ? "active" : ""
-                    }`}
-                >
-                  <Link to="/following">
-                    <img
-                        src="/image/following.png"
-                        alt="팔로잉"
-                        style={{
-                          width: "24px",
-                          height: "24px",
-                          marginRight: "10px",
-                        }}
-                    />
-                    <p>팔로잉</p>
-                  </Link>
-                </div>
-                <br />
-                <div
-                    className={`menu-item ${
-                        location.pathname === "/more" ? "active" : ""
-                    }`}
-                >
-                  <Link to="/more">
-                    <img
-                        src="/image/more.png"
-                        alt="더보기"
-                        style={{
-                          width: "24px",
-                          height: "24px",
-                          marginRight: "10px",
-                        }}
-                    />
-                    <p>더보기</p>
-                  </Link>
-                </div>
-                <br />
-              </>
-          )}
-          {!isLogin && (
-              <>
-                <div
-                    className={`menu-item ${
-                        location.pathname === "/recommended" ? "active" : ""
-                    }`}
-                >
-                  <Link to="/">
-                    <img
-                        src="/image/recommended.png"
-                        alt="추천"
-                        style={{
-                          width: "24px",
-                          height: "24px",
-                          marginRight: "10px",
-                        }}
-                    />
-                    <p>추천</p>
-                  </Link>
-                </div>
-                <br />
-                <div
-                    className={`menu-item ${
-                        location.pathname === "/more" ? "active" : ""
-                    }`}
-                >
-                  <Link to="/more">
-                    <img
-                        src="/image/more.png"
-                        alt="더보기"
-                        style={{
-                          width: "24px",
-                          height: "24px",
-                          marginRight: "10px",
-                        }}
-                    />
-                    <p>더보기</p>
-                  </Link>
-                </div>
-                <br />
-              </>
-          )}
+          <div
+              className={`menu-item ${
+                  location.pathname === "/recommended" ? "active" : ""
+              }`}
+          >
+            <Link to="/">
+              <img
+                  src="/image/recommended.png"
+                  alt="추천"
+                  style={{
+                    width: "24px",
+                    height: "24px",
+                    marginRight: "10px",
+                  }}
+              />
+              <p>추천</p>
+            </Link>
+          </div>
+          <br />
+          <div
+              className={`menu-item ${
+                  location.pathname === "/profile" ? "active" : ""
+              }`}
+              onClick={() => handleMenuClick("/profile")}
+          >
+            <img
+                src="/image/profile.png"
+                alt="프로필"
+                style={{
+                  width: "24px",
+                  height: "24px",
+                  marginRight: "10px",
+                }}
+            />
+            <p>프로필</p>
+          </div>
+          <br />
+          <div
+              className={`menu-item ${
+                  location.pathname === "/write" ? "active" : ""
+              }`}
+              onClick={() => handleMenuClick("/write")}
+          >
+            <img
+                src="/image/upload.png"
+                alt="업로드"
+                style={{
+                  width: "24px",
+                  height: "24px",
+                  marginRight: "10px",
+                }}
+            />
+            <p>업로드</p>
+          </div>
+          <br />
+          <div
+              className={`menu-item ${
+                  location.pathname === "/following" ? "active" : ""
+              }`}
+              onClick={() => handleMenuClick("/following")}
+          >
+            <img
+                src="/image/following.png"
+                alt="팔로잉"
+                style={{
+                  width: "24px",
+                  height: "24px",
+                  marginRight: "10px",
+                }}
+            />
+            <p>팔로잉</p>
+          </div>
+          <br />
+          <div
+              className={`menu-item ${location.pathname === "/more" ? "active" : ""}`}
+          >
+            <Link to="/more">
+              <img
+                  src="/image/more.png"
+                  alt="더보기"
+                  style={{
+                    width: "24px",
+                    height: "24px",
+                    marginRight: "10px",
+                  }}
+              />
+              <p>더보기</p>
+            </Link>
+          </div>
+          <br />
         </div>
         {searchTerm && <p>검색어: {searchTerm}</p>}
       </div>

@@ -8,10 +8,16 @@ import com.shingu.jpix.repository.LikeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class LikeService {
+    @Autowired
     LikeRepository likeRepository;
+    @Autowired
     BoardRepository boardRepository;
+
+
 
     public BoardLike likeBoard(Integer boardId, User user) {
         Board board = boardRepository.findById(boardId).orElseThrow(() -> new IllegalArgumentException("게시물을 찾을 수 없습니다."));

@@ -8,16 +8,26 @@ import com.shingu.jpix.util.response.ResponseHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/likes")
 public class LikeController {
     private final LikeService likeService;
+
+    @GetMapping("/{boardId}/list")
+    public ResponseEntity<Object> likeOne(@PathVariable Integer boardId) {
+        List<BoardLike> like = likeService.likeOne(boardId);
+        return ResponseHandler.responseBuilder(
+                HttpStatus.OK,
+                null,
+                like
+        );
+    }
+
 
     @PostMapping("/{boardId}")
     public ResponseEntity<Object> likeBoard(@PathVariable Integer boardId, @AuthUser User user) {

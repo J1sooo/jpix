@@ -7,5 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface LikeRepository extends JpaRepository<BoardLike, Integer> {
+
     BoardLike findByBoardIdAndUserId(Integer boardId, Integer userId);
 }
