@@ -18,15 +18,6 @@ import java.util.List;
 public class LikeController {
     private final LikeService likeService;
 
-    @GetMapping("/{boardId}/list")
-    public ResponseEntity<Object> likeOne(@PathVariable Integer boardId) {
-        List<BoardLike> like = likeService.likeOne(boardId);
-        return ResponseHandler.responseBuilder(
-                HttpStatus.OK,
-                null,
-                like
-        );
-    }
 
 
     @PostMapping("/{boardId}")
