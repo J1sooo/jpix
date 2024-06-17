@@ -5,6 +5,10 @@
 body {
   font-family: 'nanumsquare';
 }
+
+.root {
+
+}
 .left-menu{
   list-style-type: none;
   padding: 0px;
