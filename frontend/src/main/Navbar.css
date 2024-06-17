@@ -98,6 +98,41 @@ body {
     color: #333;
 }
 
+.search-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    border-radius: 25px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+}
+
+.search-input {
+    flex-grow: 1;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 25px 0 0 25px;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-button {
+    background: #007bff;
+    border: none;
+    padding: 10px 15px;
+    color: white;
+    font-size: 16px;
+    border-radius: 0 25px 25px 0;
+    cursor: pointer;
+}
 
 .nav-buttons {
     display: flex;
@@ -130,7 +165,6 @@ body {
 }
 
 /* Left menu specific styles */
-/*
 .left-menu {
     list-style-type: none;
     padding: 0px;
@@ -180,7 +214,6 @@ body {
     color: inherit;
     text-decoration: none;
 }
-*/
 /* 다크 모드 토글 버튼 스타일 */
 .dark-mode-toggle {
     padding: 10px 20px;

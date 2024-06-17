@@ -98,10 +98,10 @@ const Navbar = ({ onLoginClick }) => {
                     }`}
                 >
                   <Link to="/"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                  }}>
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                        }}>
                     <img
                         src="/image/recommended.png"
                         alt="추천"
@@ -112,7 +112,7 @@ const Navbar = ({ onLoginClick }) => {
                         }}
                     />
                     <span>추천</span>
-                    
+
                   </Link>
                 </div>
                 <br />
@@ -191,10 +191,10 @@ const Navbar = ({ onLoginClick }) => {
                     }`}
                 >
                   <Link to="/more"
-                  style={{
-                    display: " flex",
-                    alignItems: " center"
-                  }}
+                        style={{
+                          display: " flex",
+                          alignItems: " center"
+                        }}
                         style={{
                           display: "flex",
                           alignItems: "center"
@@ -222,10 +222,10 @@ const Navbar = ({ onLoginClick }) => {
                     }`}
                 >
                   <Link to="/"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                  }}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                        }}
                   >
                     <img
                         src="/image/recommended.png"

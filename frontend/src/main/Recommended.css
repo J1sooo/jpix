@@ -1,6 +1,5 @@
 .main {
   padding: 40px;
-  overflow-y: auto;
 }
 
 .video-container-wrapper {
@@ -58,7 +57,7 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  height: 100vh;
+  height: 100%;
   overflow-y: auto;
 }
 
