@@ -1,4 +1,4 @@
-package com.shingu.jpix.controller;
+package com.shingu.jpix.Controller;
 
 import com.shingu.jpix.domain.entity.Board;
 import com.shingu.jpix.domain.entity.Like;

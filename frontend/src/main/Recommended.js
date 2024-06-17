@@ -13,6 +13,7 @@ function Recommended() {
     const endRef = useRef(null);
     const navigate = useNavigate();
     const loggedInUser = useRecoilValue(UserState); // Recoil을 사용하여 현재 로그인 사용자 정보 가져오기
+    const [liked, setLiked] = useState(false);
 
     const getPost = async () => {
         setIsLoading(true);
@@ -78,20 +79,18 @@ function Recommended() {
         };
     }, [data]); // data가 변경될 때마다 실행
 
-    const boardDelete = async (id) => {
-        const confirmDelete = window.confirm("정말로 삭제하시겠습니까?");
-        if (!confirmDelete) return;
-
+    const Like = async (userId, boardId) => {
         try {
-            await axios.delete(`/board/delete/${id}`);
-            setData((prevData) => prevData.filter((post) => post.id !== id));
+            await axios.post('/like', null, {
+                params: {
+                    userId: userId,
+                    boardId: boardId
+                }
+            });
+            setLiked(true);
         } catch (error) {
-            console.error("Error deleting post:", error);
+            console.error('좋아요 요청 실패:', error);
         }
-    };
-
-    const boardModify = (id) => {
-        navigate(`/modify/${id}`);
     };
 
     return (
@@ -112,9 +111,9 @@ function Recommended() {
                         }}
                     >
                         <Link to={`/video/${v.id}`}>
-                            <div className="video-container" style={{ width: "18rem" }}>
+                            <div className="video-container" style={{width: "18rem"}}>
                                 <video ref={(el) => (videoRefs.current[idx] = el)} playsInline preload="auto" loop>
-                                    <source src={v.filepath} type="video/mp4" />
+                                    <source src={v.filepath} type="video/mp4"/>
                                 </video>
                             </div>
                         </Link>
@@ -130,6 +129,15 @@ function Recommended() {
                         <div className="video-info">
                             <p className="card-text">작성자: {v.user.nickname}</p>
                         </div>
+                        <button
+                            id="likeButton"
+                            className={v.liked ? 'liked' : ''}
+                            onClick={() => Like(loggedInUser.id, v.id)}
+                            disabled={v.liked}
+                        >
+                            {v.liked ? '❤️' : '♡'}
+                        </button>
+
                     </div>
                 ))}
                 {isLoading && <div>로딩 중...</div>}
