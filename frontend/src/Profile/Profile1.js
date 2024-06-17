@@ -1,10 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import "./Recommended.css";
-import "./Navbar.css"
-import {Link, useNavigate} from "react-router-dom";
-import {useRecoilValue} from "recoil";
-import {UserState} from "../recoil/RecoilState";
+import { Link, useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { UserState } from "../recoil/RecoilState"; // Recoil에서 사용자 정보 상태 가져오기
 
 function Recommended() {
     const [data, setData] = useState([]);
@@ -58,11 +56,6 @@ function Recommended() {
             (entries) => {
                 entries.forEach((entry) => {
                     const video = entry.target;
-                    if (entry.isIntersecting) {
-                        video.play();
-                    } else {
-                        video.pause();
-                    }
                 });
             },
             { threshold: 0.7 } // 비디오가 70% 이상 보일 때 재생
@@ -79,60 +72,22 @@ function Recommended() {
         };
     }, [data]); // data가 변경될 때마다 실행
 
-    const Like = async (boardId) => {
-        try {
-            await axios.post('/likes/'+ boardId,
-                );
-            setLiked(true);
-        } catch (error) {
-            console.error('좋아요 요청 실패:', error);
-        }
-    };
+
+    // 현재 로그인한 사용자의 아이디와 영상의 작성자 아이디가 같은 경우만 필터링
+    const filteredData = data.filter(v => v.user.id === loggedInUser.id);
 
     return (
-        <div className="app-container">
-            <div className="main">
-                {data.map((v, idx) => (
-                    <div
-                        key={v.id}
-                        className="video-container-wrapper"
-                        style={{
-                            border: "1px solid black",
-                            borderRadius: "15px",
-                            padding: "20px",
-                            margin: "10px 0",
-                            marginBottom: "40px",
-                            paddingBottom: "50px",
-                            paddingRight: "25px",
-                        }}
-                    >
-                        <Link to={`/video/${v.id}`}>
-                            <div className="video-container" style={{width: "18rem"}}>
-                                <video ref={(el) => (videoRefs.current[idx] = el)} playsInline preload="auto" loop>
+        <div className="profileVideoContainer">
+            <div className="row row-cols-auto">
+                {filteredData.map((v, idx) => (
+                    <div key={v.id}>
+                        <Link to={`/video/${v.id}`} className="">
+                            <div className="video-container col">
+                                <video ref={(el) => (videoRefs.current[idx] = el)}>
                                     <source src={v.filepath} type="video/mp4"/>
                                 </video>
                             </div>
                         </Link>
-                        <div className="d-flex justify-content-around">
-                            {/* 좋아요, 공유 등의 버튼 */}
-                        </div>
-                        <div className="video-info">
-                            <h3 className="card-title">{v.title}</h3>
-                        </div>
-                        <div className="video-info">
-                            <p className="card-text">{v.content}</p>
-                        </div>
-                        <div className="video-info">
-                            <p className="card-text">작성자: {v.user.nickname}</p>
-                        </div>
-                        <button
-                            id="likeButton"
-                            className={v.liked ? 'liked' : ''}
-                            onClick={() => Like(v.id)}
-                            disabled={v.liked}
-                        >
-                            {v.liked ? '❤️' : '♡'}
-                        </button>
 
                     </div>
                 ))}

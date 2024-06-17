@@ -33,7 +33,7 @@ const Navbar = ({ onLoginClick }) => {
   };
 
   return (
-      <div className="App">
+      <div className="">
         <div className="white-nav">
           <div className="logo-container">
             <Link to="/">
