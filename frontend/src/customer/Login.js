@@ -63,25 +63,32 @@ const Login = ({ onClose }) => {
         navigate("/"); // 기본 페이지로 리다이렉트
     };
 
-  return (
-      <>
-        <div className="modal-overlay" onClick={onClose}></div>
-        {/* 반투명 배경 */}
-        <div className="login-modal">
-          <div className="login-form">
-            <h2> JPIX에 로그인</h2>
-            <input
-                type="text"
-                placeholder="아이디"
-                value={username}
-                onChange={handleUsernameChange}
-            />
-            <input
-                type="password"
-                placeholder="비밀번호"
-                value={password}
-                onChange={handlePasswordChange}
-            />
+    const handleKeyPress = (e) => {
+        if (e.key === "Enter") {
+            handleLogin();
+        }
+    };
+
+    return (
+        <>
+            <div className="modal-overlay" onClick={onClose}></div>
+            {/* 반투명 배경 */}
+            <div className="login-modal">
+                <div className="login-form">
+                    <h2> JPIX에 로그인</h2>
+                    <input
+                        type="text"
+                        placeholder="아이디"
+                        value={username}
+                        onChange={handleUsernameChange}
+                    />
+                    <input
+                        type="password"
+                        placeholder="비밀번호"
+                        value={password}
+                        onChange={handlePasswordChange}
+                        onKeyPress={handleKeyPress}
+                    />
 
                     <button onClick={handleLogin}>로그인</button>
 
@@ -89,42 +96,12 @@ const Login = ({ onClose }) => {
                         <button onClick={handleSignUp}>회원가입</button>
                     </Link>
 
-            <button onClick={onClose}>닫기</button>
-            {/* 모달 닫기 버튼 */}
-          </div>
-        </div>
-      </>
-  );
+                    <button onClick={onClose}>닫기</button>
+                    {/* 모달 닫기 버튼 */}
+                </div>
+            </div>
+        </>
+    );
 };
-const a = document.createElement('a');
-a.href = 'javascript:kakaoLogin();';
-
-
-document.body.appendChild(a);
-
-// Load the Kakao SDK script dynamically
-const script = document.createElement('script');
-script.src = 'https://developers.kakao.com/sdk/js/kakao.js';
-script.onload = function() {
-    window.Kakao.init('52786c6e3c6921d9668c6d5f297e1a04');
-};
-document.head.appendChild(script);
-
-// Define the kakaoLogin function
-function kakaoLogin() {
-    window.Kakao.Auth.login({
-        scope: 'profile_nickname, profile_image',
-        success: function(authObj) {
-            console.log(authObj);
-            window.Kakao.API.request({
-                url: '/v2/user/me',
-                success: function(res) {
-                    const kakao_account = res.kakao_account;
-                    console.log(kakao_account);
-                }
-            });
-        }
-    });
-}
 
 export default Login;
