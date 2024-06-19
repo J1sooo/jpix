@@ -89,6 +89,25 @@ function Recommended() {
         }
     };
 
+    const followUser = async (userId) => {
+        try {
+            await axios.post(`/user/follow/${userId}`);
+            console.log(`${userId} 을 팔로우 했습니다`);
+        } catch (error) {
+            console.error('팔로우 요청 실패:', error);
+        }
+
+    };
+
+    const unfollowUser = async (userId) => {
+        try {
+            await axios.delete(`/user/unfollow/${userId}`);
+            console.log(`${userId} 을 언팔로우 하셨습니다.`);
+        } catch (error) {
+            console.error("언팔로우 요청 실패:", error);
+        }
+    };
+
     return (
         <div className="app-container">
             <div className="main">
@@ -125,6 +144,15 @@ function Recommended() {
                         <div className="video-info">
                             <p className="card-text">작성자: {v.user.nickname}</p>
                         </div>
+                        <button
+                            className="follow-button"
+                            onClick={() =>
+                                v.user.follow ? unfollowUser(v.user.id) : followUser(v.user.id)
+                            }
+                            disabled={v.user.follow} // 팔로우 상태에 따라 버튼 비활성화
+                        >
+                            {v.user.follow ? "언팔로우" : "팔로우"}
+                        </button>
                         <button
                             id="likeButton"
                             className={v.liked ? 'liked' : ''}

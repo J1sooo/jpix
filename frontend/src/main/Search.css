@@ -1,0 +1,93 @@
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.search-bar button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.video-container-wrapper {
+    width: 18rem;
+    border: 1px solid black;
+    border-radius: 15px;
+    margin: 10px;
+    padding: 20px;
+    margin-bottom: 40px;
+    padding-bottom: 50px;
+    padding-right: 25px;
+    position: relative;
+}
+
+.video-container {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    background-color: #fff;
+}
+
+.video-container video {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.d-flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.video-info {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.card-title {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.card-text {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+}
+
+#likeButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#likeButton.liked {
+    background-color: #dc3545;
+}

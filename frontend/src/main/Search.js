@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { UserState } from "../recoil/RecoilState";
+import "./Search.css"
 
 const Search = () => {
     const { keyword } = useParams(); // URL 파라미터에서 검색어(keyword)를 가져옴

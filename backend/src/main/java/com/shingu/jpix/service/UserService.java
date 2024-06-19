@@ -117,4 +117,9 @@ public class UserService {
         Optional<User> userOptional = userRepository.findById(id);
         return userOptional.orElseThrow(() -> new RuntimeException("사용자를 찾을 수 없습니다. ID: " + id));
     }
+
+    public User findUser(int userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
+    }
 }
