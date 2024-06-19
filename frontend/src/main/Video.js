@@ -3,6 +3,7 @@ import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
 import {useRecoilValue} from "recoil";
 import {UserState} from "../recoil/RecoilState";
+import "./Video.css"
 
 function Video() {
     const { id } = useParams();
@@ -56,14 +57,14 @@ function Video() {
     };
 
     return (
-        <div className="video-detail-container">
-            <div className="video-player">
+        <div className="video-detail-containerv">
+            <div className="video-playerv">
                 <video controls>
                     <source src={data.filepath} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </div>
-            <div className="video-info">
+            <div className="video-infov">
                 <h3>{data.title}</h3>
                 <p>{data.content}</p>
                 <p className="author">작성자: {data.user.nickname}</p>
@@ -88,12 +89,12 @@ function Video() {
                         </div>
                     ))}
                     <div className="comment-input">
-                        <textarea
-                            rows="3"
-                            placeholder="댓글을 입력하세요..."
-                            value={newComment}
-                            onChange={(e) => setNewComment(e.target.value)}
-                        ></textarea>
+                    <textarea
+                        rows="3"
+                        placeholder="댓글을 입력하세요..."
+                        value={newComment}
+                        onChange={(e) => setNewComment(e.target.value)}
+                    ></textarea>
                         <button onClick={handleCommentSubmit}>댓글 작성</button>
                     </div>
                 </div>

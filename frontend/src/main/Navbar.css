@@ -55,6 +55,18 @@ body {
     color: #ffffff; /* 활성 메뉴 아이템 텍스트 색상 */
 }
 
+.dark-mode .search-form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    border-radius: 25px 0 0 25px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    height: 60px;
+}
+
 .dark-mode .search-input {
     background-color: #444;
     color: #ffffff; /* 검색 입력 텍스트 색상 */
@@ -69,12 +81,13 @@ body {
     filter: invert(1);
 }
 
+
+
 /* Navbar specific styles */
 .white-nav {
     width: 100%;
-    position: fixed;
     display: flex;
-    height: 60px;
+    height: 100%;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -84,7 +97,6 @@ body {
     box-sizing: border-box;
     background-color: #f8f9fa;
     border-bottom: 1px solid #ddd;
-    z-index: 1000;
 }
 
 .logo-container {
@@ -98,41 +110,7 @@ body {
     color: #333;
 }
 
-.search-container {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-}
 
-.search-form {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    max-width: 500px;
-    background: #fff;
-    border-radius: 25px;
-    border: 1px solid #ddd;
-    overflow: hidden;
-}
-
-.search-input {
-    flex-grow: 1;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 25px 0 0 25px;
-    font-size: 16px;
-    outline: none;
-}
-
-.search-button {
-    background: #007bff;
-    border: none;
-    padding: 10px 15px;
-    color: white;
-    font-size: 16px;
-    border-radius: 0 25px 25px 0;
-    cursor: pointer;
-}
 
 .nav-buttons {
     display: flex;
@@ -172,6 +150,7 @@ body {
     width: 100px;
     height: 100%;
     margin-top: 50px;
+    overflow: auto;
     position: fixed;
 }
 

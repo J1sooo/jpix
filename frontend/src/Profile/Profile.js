@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Profile.css";
 
+
 function Profile() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
