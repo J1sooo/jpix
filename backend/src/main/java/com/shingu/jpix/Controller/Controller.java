@@ -67,6 +67,12 @@ public class Controller {
         return ResponseEntity.ok(board);
     }
 
+    @GetMapping("board/search/{title}")
+    public ResponseEntity<List<Board>> searchByTitle(@PathVariable("title") String title) {
+        List<Board> boards = boardService.searchByTitle(title);
+        return new ResponseEntity<>(boards, HttpStatus.OK);
+    }
+
     // 게시글 좋아요 토글 엔드포인트
     @PutMapping("/{id}/like")
     public ResponseEntity<?> toggleLike(@PathVariable Integer id) {

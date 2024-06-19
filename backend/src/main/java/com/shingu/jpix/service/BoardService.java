@@ -4,9 +4,11 @@ import com.shingu.jpix.domain.entity.Board;
 import com.shingu.jpix.repository.BoardRepository;
 import com.shingu.jpix.s3.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.awt.print.Pageable;
 import java.io.File;
 import java.util.List;
 import java.util.Optional;
@@ -77,5 +79,9 @@ public class BoardService {
     public Board findBoardById(Integer id) {
         Optional<Board> boardOptional = boardRepository.findById(id);
         return boardOptional.orElseThrow(() -> new RuntimeException("게시물을 찾을 수 없습니다. ID: " + id));
+    }
+
+    public List<Board> searchByTitle(String title) {
+        return boardRepository.findByTitleContaining(title);
     }
 }

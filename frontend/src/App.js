@@ -14,7 +14,7 @@ import UseCheckMe from "./User/Checkme";
 import Video from "./main/Video";
 import Modify from "./Profile/Modify";
 import Profile1 from "./Profile/Profile1";
-import Search from "./Search";
+import Search from "./main/Search";
 
 function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -44,6 +44,7 @@ function App() {
           <Route path="/settings" element={<Settings />} />
           <Route path="/write" element={<Write />} />
           <Route path="/customer/signup" element={<SignUp />} />
+          <Route path="/search/:keyword" element={<Search />} />
 
         </Routes>
       </div>

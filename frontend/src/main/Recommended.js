@@ -82,7 +82,7 @@ function Recommended() {
     const Like = async (boardId) => {
         try {
             await axios.post('/likes/'+ boardId,
-                );
+            );
             setLiked(true);
         } catch (error) {
             console.error('좋아요 요청 실패:', error);
