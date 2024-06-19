@@ -10,13 +10,13 @@
     margin: auto;
     height: calc(100vh - 40px); /* 화면 높이에 맞춤 */
     overflow: hidden; /* 자식 요소들의 스크롤 설정 */
-    padding-top: 100px;
+    padding-top: 120px;
 }
 
 .video-playerv {
     flex: 1;
-    max-width: 500px;
-    height: 800px;
+    max-width: 400px;
+    max-height: 650px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     overflow: hidden;
