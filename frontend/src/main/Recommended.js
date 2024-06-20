@@ -108,6 +108,8 @@ function Recommended() {
         }
     };
 
+
+
     return (
         <div className="app-container">
             <div className="main">
@@ -119,7 +121,7 @@ function Recommended() {
                             border: "1px solid black",
                             borderRadius: "15px",
                             padding: "20px",
-                            margin: "10px 0",
+                            margin: "40px 0",
                             marginBottom: "40px",
                             paddingBottom: "50px",
                             paddingRight: "25px",

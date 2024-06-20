@@ -1,12 +1,14 @@
 .layout{
     width: 600px;
-    position: relative;
+    position: absolute;
     margin: 50px auto;
     padding: 30px;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #fff;
+    margin-top: 130px;
+    left: 400px;
 }
 
 
@@ -16,17 +18,19 @@ form {
 }
 
 input[type="text"], textarea, input[type="file"] {
-    margin-bottom: 15px;
+    margin-bottom: 0;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 input[type="text"]:focus, textarea:focus, input[type="file"]:focus {
     border-color: #007BFF;
     outline: none;
 }
+
+
 
 textarea {
     height: 150px;

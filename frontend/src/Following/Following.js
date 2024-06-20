@@ -21,10 +21,12 @@ function Following() {
     }, [loggedInUser.id]);
 
     return (
-        <div>
+        <div className="follow-item"
+             style={{position:"relative",
+                     paddingTop:"100px"}}>
             <h2>팔로잉 페이지</h2>
             {following.length > 0 ? (
-                <ul>
+                <ul  style={{ listStyleType: "none" }}>
                     {following.map((follow) => (
                         <li key={follow.id}>
                             ID: {follow.id}, 닉네임: {follow.username}

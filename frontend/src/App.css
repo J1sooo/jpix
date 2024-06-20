@@ -145,6 +145,7 @@ body {
   width: 3px; /* 세로줄의 너비 */
   height: 100%;
   background-color: #ddd; /* 세로줄의 색상 */
+  right: -50px;
 }
 
 .left-menu .menu-item {

@@ -46,7 +46,7 @@ const Navbar = ({ onLoginClick }) => {
                 </div>
                 <div className="search-container">
                     <div className="search-form" role="search">
-                        <input type="text" placeholder="검색"
+                        <input type="text2" placeholder="검색"
                                onChange={(e) => setKeyword(e.target.value)}
                                onKeyDown={e => enter(e)}
                         />
